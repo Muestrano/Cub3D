@@ -6,7 +6,7 @@
 /*   By: picarlie <picarlie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:54:44 by picarlie          #+#    #+#             */
-/*   Updated: 2025/04/21 16:58:42 by picarlie         ###   ########.fr       */
+/*   Updated: 2025/04/21 16:59:58 by picarlie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct s_map {
 } t_map;
 
 /* Ray structure */
-/* Constains the angle of a ray and the distance to the wall  */
+/* Contains the angle of a ray and the distance to the wall  */
 typedef	struct s_ray
 {
 	double	angle;
@@ -41,7 +41,7 @@ typedef	struct s_ray
 /* Player raycasting structure */
 /* Contains the player position (x,y) in pixels */
 /* The player angle in radians */
-/* The Field of view in radians */
+/* The field of view in radians */
 typedef struct	s_player
 {
 	int		p_x;
