@@ -1,8 +1,13 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
-#include <stdio.h>
-#include <unistd.h>
+# include <string.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdio.h>
+# include <math.h>
+//# include "MLX/MLX42.h" // include the mlx library
+
 typedef struct s_map {
 	char* south_tex;
 	char* north_tex;
@@ -12,5 +17,27 @@ typedef struct s_map {
 	char* ceiling;
 	char** map;
 } t_map;
+
+/* Ray structure */
+/* Constains the angle of a ray and the distance to the wall  */
+typedef	struct s_ray
+{
+	double	angle;
+	double	dist;
+}t_ray;
+
+/* Player raycasting structure */
+/* Contains the player position (x,y) in pixels */
+/* The player angle in radians */
+/* The Field of view in radians */
+typedef struct	s_player
+{
+	int		p_x;
+	int		p_y;
+	double	p_angle;
+	double	fov;
+}t_player;
+
+typedef struct 
 
 #endif
