@@ -6,7 +6,7 @@
 /*   By: picarlie <picarlie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:54:44 by picarlie          #+#    #+#             */
-/*   Updated: 2025/04/21 16:54:45 by picarlie         ###   ########.fr       */
+/*   Updated: 2025/04/21 16:58:42 by picarlie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,15 @@ typedef struct	s_player
 	double	fov;
 }t_player;
 
-typedef struct 
+/* Player struct in the game */
+/* Define the player position in the map (in tiles) */
+/* And the player's movement (with mlx hook) */
+typedef struct	s_game
+{
+	int	pos_x;
+	int	pos_y;
+	int	up_down;
+	int	right_left;
+}t_game;
 
 #endif
