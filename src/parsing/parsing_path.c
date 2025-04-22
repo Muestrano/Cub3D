@@ -48,7 +48,7 @@ char	**ft_split(char const *s, char c)
 			if (!ft_strchr(s, c))
 				word_len = ft_strlen(s);
 			else
-				word_len = ft_strchr(s, c) - s;
+				word_len = ft_strchr(s, c) - *s;
 			lst[i++] = ft_substr(s, 0, word_len);
 			s += word_len;
 		}
