@@ -6,7 +6,7 @@
 /*   By: picarlie <picarlie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:54:44 by picarlie          #+#    #+#             */
-/*   Updated: 2025/04/21 16:59:58 by picarlie         ###   ########.fr       */
+/*   Updated: 2025/04/22 14:45:05 by picarlie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,15 @@ typedef struct	s_player
 
 /* Player struct in the game */
 /* Define the player position in the map (in tiles) */
-/* And the player's movement (with mlx hook) */
+/* And the player's movement's entries */
+/* Added tile size (in pixels) for zoom in/out (here to put ?????) */
 typedef struct	s_game
 {
 	int	pos_x;
 	int	pos_y;
 	int	up_down;
 	int	right_left;
+	int	tile_size;
 }t_game;
 
 /* Function prototypes */
