@@ -6,7 +6,7 @@
 /*   By: picarlie <picarlie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 13:56:28 by picarlie          #+#    #+#             */
-/*   Updated: 2025/04/23 18:14:41 by picarlie         ###   ########.fr       */
+/*   Updated: 2025/04/23 18:35:01 by picarlie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,23 @@ void norm_angle(float *angle)
 {
 	if (*angle >= (2 * M_PI))
 		*angle -= 2 * M_PI;
+}
+
+/* Takes the coordinates of a tile (in pixels) */
+/* Returns 1 if it is a wall */
+/* Returns 0 if not */
+// TO CHEEEEECCCKKKKKK !!!!!!!!!!!!!!!!!
+// Peut etre quelques protections a mettre pour pas segfault avec la map[x][y]
+// Protections pour x > 0 et y > 0 ???????
+int	is_wall(float x_inter, float y_inter, char **map)
+{
+	int	x;
+	int	y;
+
+	x = floor(x_inter / TILE_SIZE);
+	y = floor(y_inter / TILE_SIZE);
+	return (map[x][y] - 48);
+	//return (map[floor(x_inter / TILE_SIZE)][floor(y_inter / TILE_SIZE] - 48);
 }
 
 int	horizon_check(t_ray *ray, char **map, t_player player, t_game game)
