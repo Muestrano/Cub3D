@@ -35,12 +35,12 @@ int read_args(int fd, t_map *map)
     return (0);
 }
 
-int print_struct(t_map map)
-{
-    printf("Path: %s\n", map.path);
-    printf("Buffer: %s\n", map.buffer);
-    return (0);
-}
+// int print_struct(t_map map)
+// {
+//     printf("Path: %s\n", map.path);
+//     printf("Buffer: %s\n", map.buffer);
+//     return (0);
+// }
 
 void init_map(t_map **map)
 {
@@ -51,11 +51,45 @@ void init_map(t_map **map)
         exit(1);
     }
     (*map)->path = NULL;
-    (*map)->south_tex = NULL;
-    (*map)->north_tex = NULL;
-    (*map)->west_tex = NULL;
-    (*map)->est_tex = NULL;
-    (*map)->floor = NULL;
-    (*map)->ceiling = NULL;
-    (*map)->map_data = NULL;
+    (*map)->buffer[0] = '\0';
+    (*map)->map_brute = NULL;
+    (*map)->init_orientation = 0;
 }
+
+void init_texture(t_texture **texture)
+{
+    *texture = (t_texture *)malloc(sizeof(t_texture));
+    if (!*texture)
+    {
+        write(2, "Error\nFailed to allocate memory for texture\n", 43);
+        exit(1);
+    }
+    (*texture)->SOUTH = NULL;
+    (*texture)->NORTH = NULL;
+    (*texture)->WEST = NULL;
+    (*texture)->EAST = NULL;
+    (*texture)->floor = 0;
+    (*texture)->ceiling = 0;
+}
+
+
+// void init_struct(t_map map, t_texture texture)
+// {
+//     // Initialize the map structure
+//     init_map(&map);
+
+//     // Initialize the texture structure
+//     init_texture(&texture);
+
+    // // Initialize the player structure
+    // player->p_x = 0;
+    // player->p_y = 0;
+    // player->p_angle = 0.0;
+    // player->fov = 0.0;
+
+    // // Initialize the game structure
+    // game->pos_x = 0;
+    // game->pos_y = 0;
+    // game->up_down = 0;
+    // game->right_left = 0;
+// }
