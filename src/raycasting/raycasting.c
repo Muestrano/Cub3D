@@ -6,7 +6,7 @@
 /*   By: picarlie <picarlie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 13:56:28 by picarlie          #+#    #+#             */
-/*   Updated: 2025/04/24 14:26:40 by picarlie         ###   ########.fr       */
+/*   Updated: 2025/04/24 14:36:46 by picarlie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 /* Tells the sign of the steps based on the ray's angle */
 /* Take the angle of a ray and the type of step (x or y) */
 /* Returns the sign of the step */
-int	step_sign(float	angle, char c)
+int	step_sign(float angle, char c)
 {
-	float pi;
-	
+	float	pi;
+
 	pi = M_PI;
 	if (c == 'x')
 	{
@@ -39,10 +39,15 @@ int	step_sign(float	angle, char c)
 
 /* Set the angle between 0 and 2PI */
 /* Take an angle as argument */
-void norm_angle(float *angle)
+void	norm_angle(float *angle)
 {
-	if (*angle >= (2 * M_PI))
-		*angle -= 2 * M_PI;
+	float	pi;
+
+	pi = M_PI;
+	if (*angle >= (2 * pi))
+		*angle -= 2 * pi;
+	else if (*angle < 0)
+		*angle += 2 * pi;
 }
 
 /* Takes the coordinates of a tile (in pixels) */
@@ -50,7 +55,6 @@ void norm_angle(float *angle)
 /* Returns 0 if not */
 // TO CHEEEEECCCKKKKKK !!!!!!!!!!!!!!!!!
 // Peut etre quelques protections a mettre pour pas segfault avec la map[x][y]
-// Protections pour x > 0 et y > 0 ???????
 int	is_wall(float x_inter, float y_inter, char **map)
 {
 	int	x;
@@ -58,6 +62,10 @@ int	is_wall(float x_inter, float y_inter, char **map)
 
 	x = floor(x_inter / TILE_SIZE);
 	y = floor(y_inter / TILE_SIZE);
+	if (x < 0)
+		x = 0;
+	if (y < 0)
+		y = 0;
 	return (map[x][y] - 48);
 	//return (map[floor(x_inter / TILE_SIZE)][floor(y_inter / TILE_SIZE] - 48);
 }
@@ -76,7 +84,7 @@ int	horizon_check(t_ray *ray, char **map, t_player player, t_game game)
 	return ();
 }
 
-//Test for step_sign and norm_angle
+// Test for step_sign and norm_angle
 /*int	main ()
 {
 	float	angle;
