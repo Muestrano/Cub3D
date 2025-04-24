@@ -36,8 +36,8 @@ typedef struct s_texture
 	char *NORTH;
 	char *WEST;
 	char *EAST;
-	int floor;
-	int ceiling;
+	char *floor;
+	char *ceiling;
 }t_texture;
 
 
@@ -80,6 +80,7 @@ int read_args(int fd, t_map *map);
 void init_map(t_map **map);
 void init_struct(t_map *map, t_texture *texture);
 void init_texture(t_texture **texture);
+char **init_mapbrute(t_map *map);
 /*Print Function*/
 void print_map(char **map);
 void print_texture(t_texture texture);
@@ -108,5 +109,7 @@ char	*ft_strchr(const char *s, int c);
 size_t	ft_strlen(const char *s);
 int ft_strncmp(const char *s1, const char *s2, size_t n);
 int ft_atoi(char *str);
+char *ft_strcpy(char *src);
+
 
 #endif
