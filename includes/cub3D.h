@@ -6,7 +6,7 @@
 /*   By: picarlie <picarlie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:54:44 by picarlie          #+#    #+#             */
-/*   Updated: 2025/04/22 14:45:05 by picarlie         ###   ########.fr       */
+/*   Updated: 2025/04/23 18:21:25 by picarlie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@
 # include <math.h>
 # include <fcntl.h>
 //# include "MLX/MLX42.h" // include the mlx library
+
+# define TILE_SIZE 30 // Size of a tile (in pixels)
+# define FOV 60 // Field of view
+
 /*differencier les infos de la map avec les textures */
 typedef struct s_map {
 	char* path;
@@ -50,7 +54,7 @@ typedef	struct s_ray
 }t_ray;
 
 /* Player raycasting structure */
-/* Contains the player position (x,y) in pixels */
+/* Contains the player position (x,y) in pixels (useful ??????????)*/
 /* The player angle in radians */
 /* The field of view in radians */
 typedef struct	s_player
