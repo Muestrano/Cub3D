@@ -30,6 +30,10 @@ typedef struct s_map {
 	char buffer[2048];
 	char** map_brute;
 	char init_orientation;
+	char x_init;
+	char y_init;
+	int map_width;
+	int map_height;
 }t_map;
 
 /* Texture structure */
@@ -86,7 +90,7 @@ void init_struct(t_map *map, t_texture *texture);
 void init_texture(t_texture **texture);
 char **init_mapbrute(t_map *map);
 /*Print Function*/
-void print_map(char **map);
+void print_map(t_map *map);
 void print_texture(t_texture texture);
 void print_struct(t_map map);
 // void print_player(t_player player);
@@ -96,6 +100,9 @@ void print_struct(t_map map);
 /*Extract functions*/
 void extract_texture(char *buffer, t_texture *texture);
 void extract_map(char *buffer, t_map *map);
+void parse_map(t_map *map);
+void replace_position(t_map *map, int i, int j);
+
 /*	Free function*/	
 void free_split(char **split);
 // void free_texture(t_texture *texture);

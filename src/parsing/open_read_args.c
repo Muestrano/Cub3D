@@ -35,13 +35,6 @@ int read_args(int fd, t_map *map)
     return (0);
 }
 
-// int print_struct(t_map map)
-// {
-//     printf("Path: %s\n", map.path);
-//     printf("Buffer: %s\n", map.buffer);
-//     return (0);
-// }
-
 void init_map(t_map **map)
 {
     *map = (t_map *)malloc(sizeof(t_map));
@@ -52,9 +45,29 @@ void init_map(t_map **map)
     }
     (*map)->path = NULL;
     (*map)->buffer[0] = '\0';
-    (*map)->map_brute = NULL;
+    init_mapbrute(*map); // Initialize map_brute
     (*map)->init_orientation = 0;
 }
+
+char **init_mapbrute(t_map *map)
+{
+    int i = 0;
+
+    // Allocate memory for the map_brute array
+    map->map_brute = (char **)malloc(100 * sizeof(char *)); // Adjust size as needed
+    if (!map->map_brute)
+    {
+        write(2, "Error\nFailed to allocate memory for map_brute\n", 47);
+        exit(1);
+    }
+    while (i < 100)
+    {
+        map->map_brute[i] = NULL; // Initialize each pointer to NULL
+        i++;
+    }
+    return (map->map_brute);
+}
+
 
 void init_texture(t_texture **texture)
 {
@@ -68,8 +81,8 @@ void init_texture(t_texture **texture)
     (*texture)->NORTH = NULL;
     (*texture)->WEST = NULL;
     (*texture)->EAST = NULL;
-    (*texture)->floor = 0;
-    (*texture)->ceiling = 0;
+    (*texture)->floor =NULL;
+    (*texture)->ceiling = NULL;
 }
 
 

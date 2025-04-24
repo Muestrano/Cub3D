@@ -24,12 +24,20 @@ int main(int ac, char **av)
 
 	fd = open_args(ac, av, map);
 	read_args(fd, map);
+	printf("Buffer: %s\n", map->buffer);
 
 	extract_texture(map->buffer, texture);
+	printf("texture ok\n");
 	extract_map(map->buffer, map);
+	printf("map ok\n");
+	print_map(map);
+	printf("replace position\n");
+	parse_map(map);
+	print_map(map);
+	printf("map ok\n");
 
 	// test
-	// print_map(map->map_brute);
+	print_map(map);
 	// print_texture(*texture);
 	// test 
 	// print_struct(*map);
