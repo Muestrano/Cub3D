@@ -6,7 +6,7 @@
 /*   By: picarlie <picarlie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 13:56:28 by picarlie          #+#    #+#             */
-/*   Updated: 2025/04/28 17:22:14 by picarlie         ###   ########.fr       */
+/*   Updated: 2025/04/28 18:05:13 by picarlie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	ray_iteration(t_mlx *mlx, t_ray *ray, t_map map, t_player player)
 	{
 		horizontal_check(ray, map, player);
 		vertical_check(ray, map, player);
-		render_wall(mlx, nb_ray);
+		render_wall(mlx, nb_ray); // AJOUTER LA CORRECTION POUR EFFET FISHEYE
 		nb_ray++;
 		(*ray).angle += (FOV * M_PI / 180) / map.map_width;
 	}
@@ -111,3 +111,7 @@ void	ray_iteration(t_mlx *mlx, t_ray *ray, t_map map, t_player player)
 	printf("x : %d\ny : %d\n", step_sign(angle, 'x'), step_sign(angle, 'y'));
 	return (0);
 }*/
+
+// A FAIIIIIIIIIIIIIIRE
+// Wall projection
+// Check dans quelle orientation le wall est hit par le ray pour appliquer la bonne texture
