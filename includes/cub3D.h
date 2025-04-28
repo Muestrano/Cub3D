@@ -89,6 +89,7 @@ void init_map(t_map **map);
 void init_struct(t_map *map, t_texture *texture);
 void init_texture(t_texture **texture);
 char **init_mapbrute(t_map *map);
+void revise_buffer(t_map *map);
 /*Print Function*/
 void print_map(t_map *map);
 void print_texture(t_texture texture);
@@ -99,7 +100,9 @@ void print_struct(t_map map);
 // void print_all(t_map map, t_texture texture, t_player player, t_game game);
 /*Extract functions*/
 void extract_texture(char *buffer, t_texture *texture);
+void verify_texture(t_texture *texture);
 void extract_map(char *buffer, t_map *map);
+void verify_map(t_map *map);
 void parse_map(t_map *map);
 void replace_position(t_map *map, int i, int j);
 

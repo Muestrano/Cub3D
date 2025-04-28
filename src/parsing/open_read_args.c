@@ -6,13 +6,13 @@ int open_args(int ac, char **av, t_map *map)
 
     if (ac != 2)
     {
-        write(2, "Error\nWrong number of arguments\n", 33);
+        printf("Error\nWrong number of arguments\n");
         return (1);
     }
     fd = open(av[1], O_RDONLY);
     if (fd < 0)
     {
-        write(2, "Error\nFile not found\n", 22);
+        printf("Error\nFile not found\n");
         return (1);
     }
     map->path = av[1];
@@ -27,7 +27,7 @@ int read_args(int fd, t_map *map)
     ret = read(fd, map->buffer, 2048);
     if (ret < 0)
     {
-        write(2, "Error\nFailed to read file\n", 27);
+        printf("Error\nFailed to read file\n");
         close(fd); // Close the file descriptor on error
         return (1);
     }
@@ -40,7 +40,7 @@ void init_map(t_map **map)
     *map = (t_map *)malloc(sizeof(t_map));
     if (!*map)
     {
-        write(2, "Error\nFailed to allocate memory for map\n", 40);
+        printf("Error\nFailed to allocate memory for map\n");
         exit(1);
     }
     (*map)->path = NULL;
@@ -57,7 +57,7 @@ char **init_mapbrute(t_map *map)
     map->map_brute = (char **)malloc(100 * sizeof(char *)); // Adjust size as needed
     if (!map->map_brute)
     {
-        write(2, "Error\nFailed to allocate memory for map_brute\n", 47);
+        printf("Error\nFailed to allocate memory for map_brute\n");
         exit(1);
     }
     while (i < 100)

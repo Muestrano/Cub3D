@@ -15,7 +15,7 @@ void print_texture(t_texture texture)
 void print_map(t_map *map)
 {
     int i = 0;
-    while (map->map_brute[i])
+    while (map->map_brute[i] != NULL)
     {
         printf("valeur de I %d: %s\n", i, map->map_brute[i]);
         i++;
@@ -26,71 +26,3 @@ void print_map(t_map *map)
     printf("Map structure printed successfully.\n");
 }
 
-void max_x(t_map *map)
-{
-    int i = 0;
-    int max = 0;
-    while (map->map_brute[i])
-    {
-        if (ft_strlen(map->map_brute[i]) > max)
-            max = ft_strlen(map->map_brute[i]);
-        i++;
-    }
-    printf("max x: %d\n", max);
-}
-
-
-void max_width(t_map *map)
-{
-    int i = 0;
-    int max = 0;
-    while (map->map_brute[i])
-    {
-        if (ft_strlen(map->map_brute[i]) > max)
-            max = ft_strlen(map->map_brute[i]);
-        i++;
-    }
-    printf("max width: %d\n", max);
-}
-void check_map(t_map *map)
-{
-    int i = 0;
-    int j;
-    int max = 0;
-    while (map->map_brute[i])
-    {
-        j = 0;
-        while (map->map_brute[i][j])
-        {
-            if (map->map_brute[i][j] == '1')
-                printf("line %d, column %d: wall\n", i, j);
-            else if (map->map_brute[i][j] == '0')
-                printf("line %d, column %d: empty space\n", i, j);
-            else
-                printf("line %d, column %d: invalid character\n", i, j);
-            j++;
-        }
-        i++;
-    }       
-}
-void check_line(t_map *map)
-{
-    int i = 0;
-    int j;
-    int max = 0;
-    while (map->map_brute[i])
-    {
-        j = 0;
-        while (map->map_brute[i][j])
-        {
-            if (map->map_brute[i][j] == '1')
-                printf("line %d, column %d: wall\n", i, j);
-            else if (map->map_brute[i][j] == '0')
-                printf("line %d, column %d: empty space\n", i, j);
-            else
-                printf("line %d, column %d: invalid character\n", i, j);
-            j++;
-        }
-        i++;
-    }
-}
