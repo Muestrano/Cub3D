@@ -1,0 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minilibx_utils.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: picarlie <picarlie@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/28 17:36:26 by picarlie          #+#    #+#             */
+/*   Updated: 2025/04/28 17:40:48 by picarlie         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../includes/cub3D.h"
+
+void	rot_angle(t_player *player)
+{
+	(*player).p_angle += turn_direction * rot_speed;
+	norm_angle((*player).p_angle);
+}

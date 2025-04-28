@@ -6,7 +6,7 @@
 /*   By: picarlie <picarlie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 16:34:33 by picarlie          #+#    #+#             */
-/*   Updated: 2025/04/28 16:35:06 by picarlie         ###   ########.fr       */
+/*   Updated: 2025/04/28 17:41:13 by picarlie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /* Tells the sign of the steps based on the ray's angle */
 /* Take the angle of a ray and the type of step (x or y) */
 /* Returns the sign of the step */
-int	step_sign(float angle, char c)
+int	step_sign(double angle, char c)
 {
 	float	pi;
 
@@ -39,7 +39,7 @@ int	step_sign(float angle, char c)
 
 /* Set the angle between 0 and 2PI */
 /* Take an angle as argument */
-void	norm_angle(float *angle)
+void	norm_angle(double *angle)
 {
 	float	pi;
 

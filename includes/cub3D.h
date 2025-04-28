@@ -6,7 +6,7 @@
 /*   By: picarlie <picarlie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:54:44 by picarlie          #+#    #+#             */
-/*   Updated: 2025/04/28 17:29:15 by picarlie         ###   ########.fr       */
+/*   Updated: 2025/04/28 17:41:30 by picarlie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,8 +122,8 @@ int		ft_atoi(char *str);
 char	*ft_strcpy(char *src);
 
 /* raycasting_utils */
-int		step_sign(float angle, char c);
-void	norm_angle(float *angle);
+int		step_sign(double angle, char c);
+void	norm_angle(double *angle);
 
 /* raycasting_iteration */
 // int		is_wall(double x_inter, double y_inter, t_map map);
