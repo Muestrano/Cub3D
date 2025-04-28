@@ -6,7 +6,7 @@
 /*   By: picarlie <picarlie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 13:56:28 by picarlie          #+#    #+#             */
-/*   Updated: 2025/04/28 16:49:35 by picarlie         ###   ########.fr       */
+/*   Updated: 2025/04/28 17:22:14 by picarlie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,25 @@ void	vertical_check(t_ray *ray, t_map map, t_player player)
 	if (new_dist < (*ray).dist)
 		(*ray).dist = new_dist;
 	return ;
+}
+
+/* Takes the mlx, ray, map and player structures */
+/* Cast each ray of the FOV */
+void	ray_iteration(t_mlx *mlx, t_ray *ray, t_map map, t_player player)
+{
+	int	nb_ray;
+
+	nb_ray = 0;
+	(*ray).angle = player.p_angle - ((FOV * M_PI / 180) / 2);
+	norm_angle(&((*ray).angle));
+	while (nb_ray < map.map_width)
+	{
+		horizontal_check(ray, map, player);
+		vertical_check(ray, map, player);
+		render_wall(mlx, nb_ray);
+		nb_ray++;
+		(*ray).angle += (FOV * M_PI / 180) / map.map_width;
+	}
 }
 
 // Test for step_sign and norm_angle
