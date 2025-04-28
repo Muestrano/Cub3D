@@ -6,7 +6,7 @@
 /*   By: picarlie <picarlie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:54:44 by picarlie          #+#    #+#             */
-/*   Updated: 2025/04/23 18:21:25 by picarlie         ###   ########.fr       */
+/*   Updated: 2025/04/28 17:41:30 by picarlie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,64 +25,64 @@
 # define FOV 60 // Field of view
 
 /*differencier les infos de la map avec les textures */
-typedef struct s_map {
-	char* path;
-	char buffer[2048];
-	char** map_brute;
-	char init_orientation;
-	char x_init;
-	char y_init;
-	int map_width;
-	int map_height;
-}t_map;
+typedef struct s_map
+{
+	char	*path;
+	char	buffer[2048];
+	char	**map_brute;
+	char	init_orientation;
+	char	x_init;
+	char	y_init;
+	int		map_width;
+	int		map_height;
+}	t_map;
 
 /* Texture structure */
 /* Contains the path to the textures */
 typedef struct s_texture
 {
-	char *SOUTH;
-	char *NORTH;
-	char *WEST;
-	char *EAST;
-	char *floor;
-	char *ceiling;
-}t_texture;
-
+	char	*SOUTH;
+	char	*NORTH;
+	char	*WEST;
+	char	*EAST;
+	char	*floor;
+	char	*ceiling;
+}	t_texture;
 
 /* Ray structure */
 /* Contains the angle of a ray and the distance to the wall  */
-typedef	struct s_ray
+typedef struct s_ray
 {
 	double	angle;
 	double	dist;
-}t_ray;
+}	t_ray;
 
 /* Player raycasting structure */
 /* Contains the player position (x,y) in pixels (useful ??????????)*/
 /* The player angle in radians */
 /* The field of view in radians */
-typedef struct	s_player
+typedef struct s_player
 {
 	int		p_x;
 	int		p_y;
 	double	p_angle;
-	double	fov;
-}t_player;
+}	t_player;
 
-/* Player struct in the game */
-/* Define the player position in the map (in tiles) */
-/* And the player's movement's entries */
-/* Added tile size (in pixels) for zoom in/out (here to put ?????) */
-typedef struct	s_game
-{
-	int	pos_x;
-	int	pos_y;
-	int	up_down;
-	int	right_left;
-	int	tile_size;
-}t_game;
+// /* Player struct in the game */
+// /* Define the player position in the map (in tiles) */
+// /* And the player's movement's entries */
+// /* Added tile size (in pixels) for zoom in/out (here to put ?????) */
+// typedef struct	s_game
+// {
+// 	int	pos_x;
+// 	int	pos_y;
+// 	int	up_down;
+// 	int	right_left;
+// 	int	tile_size;
+// }t_game;
 
 /* Function prototypes */
+<<<<<<< HEAD
 int open_args(int ac, char **av, t_map *map);
 int read_args(int fd, t_map *map);
 void init_map(t_map **map);
@@ -90,24 +90,39 @@ void init_struct(t_map *map, t_texture *texture);
 void init_texture(t_texture **texture);
 char **init_mapbrute(t_map *map);
 void revise_buffer(t_map *map);
+=======
+int		open_args(int ac, char **av, t_map *map);
+int		read_args(int fd, t_map *map);
+void	init_map(t_map **map);
+void	init_struct(t_map *map, t_texture *texture);
+void	init_texture(t_texture **texture);
+char	**init_mapbrute(t_map *map);
+>>>>>>> 0c216da809cd12798dd5e078114fbc48d27dc34d
 /*Print Function*/
-void print_map(t_map *map);
-void print_texture(t_texture texture);
-void print_struct(t_map map);
+void	print_map(t_map *map);
+void	print_texture(t_texture texture);
+void	print_struct(t_map map);
 // void print_player(t_player player);
 // void print_game(t_game game);
 // void print_ray(t_ray ray);
 // void print_all(t_map map, t_texture texture, t_player player, t_game game);
 /*Extract functions*/
+<<<<<<< HEAD
 void extract_texture(char *buffer, t_texture *texture);
 void verify_texture(t_texture *texture);
 void extract_map(char *buffer, t_map *map);
 void verify_map(t_map *map);
 void parse_map(t_map *map);
 void replace_position(t_map *map, int i, int j);
+=======
+void	extract_texture(char *buffer, t_texture *texture);
+void	extract_map(char *buffer, t_map *map);
+void	parse_map(t_map *map);
+void	replace_position(t_map *map, int i, int j);
+>>>>>>> 0c216da809cd12798dd5e078114fbc48d27dc34d
 
 /*	Free function*/	
-void free_split(char **split);
+void	free_split(char **split);
 // void free_texture(t_texture *texture);
 // void free_map(t_map *map);
 // void free_game(t_game *game);
@@ -115,15 +130,24 @@ void free_split(char **split);
 // void free_all(t_map *map, t_texture *texture, t_player *player, t_game *game);
 
 /*parsing_path*/
-int ft_strcmp(char *s1, char *s2);
+int		ft_strcmp(char *s1, char *s2);
 char	**ft_split(char *s, char c);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strdup(const char *s1);
 char	*ft_strchr(const char *s, int c);
 size_t	ft_strlen(const char *s);
-int ft_strncmp(const char *s1, const char *s2, size_t n);
-int ft_atoi(char *str);
-char *ft_strcpy(char *src);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_atoi(char *str);
+char	*ft_strcpy(char *src);
 
+/* raycasting_utils */
+int		step_sign(double angle, char c);
+void	norm_angle(double *angle);
+
+/* raycasting_iteration */
+// int		is_wall(double x_inter, double y_inter, t_map map);
+// void	horizontal_check(t_ray *ray, t_map map, t_player player);
+// void	vertical_check(t_ray *ray, t_map map, t_player player);
+void	ray_iteration(t_mlx *mlx, t_ray *ray, t_map map, t_player player);
 
 #endif
