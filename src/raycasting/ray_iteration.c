@@ -6,7 +6,7 @@
 /*   By: picarlie <picarlie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 13:56:28 by picarlie          #+#    #+#             */
-/*   Updated: 2025/04/28 16:34:59 by picarlie         ###   ########.fr       */
+/*   Updated: 2025/04/28 16:49:35 by picarlie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,44 +36,45 @@ int	is_wall(double x_inter, double y_inter, t_map map)
 /* Get and save the distance of the wall hit */
 void	horizontal_check(t_ray *ray, t_map map, t_player player)
 {
-	int	Ax;
-	int	Ay;
-	int	xStep;
-	int	yStep;
+	int	a_x;
+	int	a_y;
+	int	x_step;
+	int	y_step;
 
-	Ay = floor(player.p_y / TILE_SIZE) * TILE_SIZE;
-	Ax = player.p_x + ((Ay - player.p_y) / tan((*ray).angle));
-	yStep = TILE_SIZE * step_sign((*ray).angle, 'y');
-	xStep = (yStep / tan((*ray).angle)) * step_sign((*ray).angle, 'x');
-	while (!is_wall(xStep, yStep, map))
+	a_y = floor(player.p_y / TILE_SIZE) * TILE_SIZE;
+	a_x = player.p_x + ((a_y - player.p_y) / tan((*ray).angle));
+	y_step = TILE_SIZE * step_sign((*ray).angle, 'y');
+	x_step = (y_step / tan((*ray).angle)) * step_sign((*ray).angle, 'x');
+	while (!is_wall(a_x, a_y, map))
 	{
-		Ax += xStep;
-		Ay += yStep;
+		a_x += x_step;
+		a_y += y_step;
 	}
-	(*ray).dist = sqrt(pow(player.p_x - Ax, 2) + pow(player.p_y - Ay, 2));
+	(*ray).dist = sqrt(pow(player.p_x - a_x, 2) + pow(player.p_y - a_y, 2)); //Checker si la valeur est bien sauvegardee grace au ptr
 	return ;
 }
+
 /* Take the ray, the map and the player structures */
 /* Check every horizontal intersection until a wall is hit by the ray */
 /* Get and save the distance of the wall hit if it is closer */
 void	vertical_check(t_ray *ray, t_map map, t_player player)
 {
-	int	Ax;
-	int	Ay;
-	int	xStep;
-	int	yStep;
+	int		a_x;
+	int		a_y;
+	int		x_step;
+	int		y_step;
 	double	new_dist;
 
-	Ax = floor(player.p_y / TILE_SIZE) * TILE_SIZE;
-	Ay = player.p_y + ((Ax - player.p_x) / tan((*ray).angle));
-	xStep = TILE_SIZE * step_sign((*ray).angle, 'x');
-	yStep = (xStep / tan((*ray).angle)) * step_sign((*ray).angle, 'y');
-	while (!is_wall(xStep, yStep, map))
+	a_x = floor(player.p_y / TILE_SIZE) * TILE_SIZE;
+	a_y = player.p_y + ((a_x - player.p_x) / tan((*ray).angle));
+	x_step = TILE_SIZE * step_sign((*ray).angle, 'x');
+	y_step = (x_step / tan((*ray).angle)) * step_sign((*ray).angle, 'y');
+	while (!is_wall(a_x, a_y, map))
 	{
-		Ax += xStep;
-		Ay += yStep;
+		a_x += x_step;
+		a_y += y_step;
 	}
-	new_dist = sqrt(pow(player.p_x - Ax, 2) + pow(player.p_y - Ay, 2));
+	new_dist = sqrt(pow(player.p_x - a_x, 2) + pow(player.p_y - a_y, 2));
 	if (new_dist < (*ray).dist)
 		(*ray).dist = new_dist;
 	return ;
