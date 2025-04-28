@@ -6,7 +6,7 @@
 /*   By: picarlie <picarlie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:54:44 by picarlie          #+#    #+#             */
-/*   Updated: 2025/04/23 18:21:25 by picarlie         ###   ########.fr       */
+/*   Updated: 2025/04/28 16:38:15 by picarlie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,21 +66,20 @@ typedef struct	s_player
 	int		p_x;
 	int		p_y;
 	double	p_angle;
-	double	fov;
 }t_player;
 
-/* Player struct in the game */
-/* Define the player position in the map (in tiles) */
-/* And the player's movement's entries */
-/* Added tile size (in pixels) for zoom in/out (here to put ?????) */
-typedef struct	s_game
-{
-	int	pos_x;
-	int	pos_y;
-	int	up_down;
-	int	right_left;
-	int	tile_size;
-}t_game;
+// /* Player struct in the game */
+// /* Define the player position in the map (in tiles) */
+// /* And the player's movement's entries */
+// /* Added tile size (in pixels) for zoom in/out (here to put ?????) */
+// typedef struct	s_game
+// {
+// 	int	pos_x;
+// 	int	pos_y;
+// 	int	up_down;
+// 	int	right_left;
+// 	int	tile_size;
+// }t_game;
 
 /* Function prototypes */
 int open_args(int ac, char **av, t_map *map);
@@ -122,5 +121,13 @@ int ft_strncmp(const char *s1, const char *s2, size_t n);
 int ft_atoi(char *str);
 char *ft_strcpy(char *src);
 
+/* raycasting_utils */
+int		step_sign(float angle, char c);
+void	norm_angle(float *angle);
+
+/* raycasting_iteration */
+int		is_wall(double x_inter, double y_inter, t_map map);
+void	horizontal_check(t_ray *ray, t_map map, t_player player);
+void	vertical_check(t_ray *ray, t_map map, t_player player);
 
 #endif
