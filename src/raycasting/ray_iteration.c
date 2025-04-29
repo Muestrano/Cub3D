@@ -6,7 +6,7 @@
 /*   By: picarlie <picarlie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 13:56:28 by picarlie          #+#    #+#             */
-/*   Updated: 2025/04/29 17:37:23 by picarlie         ###   ########.fr       */
+/*   Updated: 2025/04/29 17:45:40 by picarlie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ void	vertical_check(t_ray *ray, t_map map, t_player player)
 /*  */
 void	wall_strips(t_ray *ray)
 {
+	(*ray).wall_strip_height = WIN_HEIGHT / (*ray).dist;
 	(*ray).wall_top_pixel = (WIN_HEIGHT / 2) - ((*ray).wall_strip_height / 2);
 	(*ray).wall_bottom_pixel = (WIN_HEIGHT / 2) + ((*ray).wall_strip_height / 2);
 
