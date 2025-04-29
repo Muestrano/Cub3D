@@ -6,7 +6,7 @@
 /*   By: picarlie <picarlie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 13:56:28 by picarlie          #+#    #+#             */
-/*   Updated: 2025/04/28 18:05:13 by picarlie         ###   ########.fr       */
+/*   Updated: 2025/04/29 17:13:22 by picarlie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	vertical_check(t_ray *ray, t_map map, t_player player)
 }
 
 /* Takes the mlx, ray, map and player structures */
-/* Cast each ray of the FOV */
+/* Cast each ray of the FOV with fisheye effect corrected */
 void	ray_iteration(t_mlx *mlx, t_ray *ray, t_map map, t_player player)
 {
 	int	nb_ray;
@@ -93,7 +93,8 @@ void	ray_iteration(t_mlx *mlx, t_ray *ray, t_map map, t_player player)
 	{
 		horizontal_check(ray, map, player);
 		vertical_check(ray, map, player);
-		render_wall(mlx, nb_ray); // AJOUTER LA CORRECTION POUR EFFET FISHEYE
+		(*ray).dist = (*ray).dist * cos(norm_angle((*ray).angle - player.p_angle));
+		render_wall(mlx, nb_ray);
 		nb_ray++;
 		(*ray).angle += (FOV * M_PI / 180) / map.map_width;
 	}
