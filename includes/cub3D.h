@@ -19,7 +19,8 @@
 # include <stdio.h>
 # include <math.h>
 # include <fcntl.h>
-//# include "MLX/MLX42.h" // include the mlx library
+# include "../ress/minilibx-linux/mlx.h" // include the mlx library
+# include "../ress/minilibx-linux/mlx_int.h" 
 
 # define TILE_SIZE 30 // Size of a tile (in pixels)
 # define FOV 60 // Field of view
@@ -82,22 +83,16 @@ typedef struct s_player
 // }t_game;
 
 /* Function prototypes */
-<<<<<<< HEAD
-int open_args(int ac, char **av, t_map *map);
-int read_args(int fd, t_map *map);
-void init_map(t_map **map);
-void init_struct(t_map *map, t_texture *texture);
-void init_texture(t_texture **texture);
-char **init_mapbrute(t_map *map);
+
 void revise_buffer(t_map *map);
-=======
+
 int		open_args(int ac, char **av, t_map *map);
 int		read_args(int fd, t_map *map);
 void	init_map(t_map **map);
 void	init_struct(t_map *map, t_texture *texture);
 void	init_texture(t_texture **texture);
 char	**init_mapbrute(t_map *map);
->>>>>>> 0c216da809cd12798dd5e078114fbc48d27dc34d
+
 /*Print Function*/
 void	print_map(t_map *map);
 void	print_texture(t_texture texture);
@@ -107,19 +102,13 @@ void	print_struct(t_map map);
 // void print_ray(t_ray ray);
 // void print_all(t_map map, t_texture texture, t_player player, t_game game);
 /*Extract functions*/
-<<<<<<< HEAD
-void extract_texture(char *buffer, t_texture *texture);
-void verify_texture(t_texture *texture);
-void extract_map(char *buffer, t_map *map);
-void verify_map(t_map *map);
-void parse_map(t_map *map);
-void replace_position(t_map *map, int i, int j);
-=======
+void 	verify_texture(t_texture *texture);
+void 	verify_map(t_map *map);
 void	extract_texture(char *buffer, t_texture *texture);
 void	extract_map(char *buffer, t_map *map);
 void	parse_map(t_map *map);
 void	replace_position(t_map *map, int i, int j);
->>>>>>> 0c216da809cd12798dd5e078114fbc48d27dc34d
+
 
 /*	Free function*/	
 void	free_split(char **split);
@@ -148,6 +137,6 @@ void	norm_angle(double *angle);
 // int		is_wall(double x_inter, double y_inter, t_map map);
 // void	horizontal_check(t_ray *ray, t_map map, t_player player);
 // void	vertical_check(t_ray *ray, t_map map, t_player player);
-void	ray_iteration(t_mlx *mlx, t_ray *ray, t_map map, t_player player);
+// void	ray_iteration(t_mlx *mlx, t_ray *ray, t_map map, t_player player);
 
 #endif
