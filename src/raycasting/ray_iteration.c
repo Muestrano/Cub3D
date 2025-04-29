@@ -6,7 +6,7 @@
 /*   By: picarlie <picarlie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 13:56:28 by picarlie          #+#    #+#             */
-/*   Updated: 2025/04/29 17:13:22 by picarlie         ###   ########.fr       */
+/*   Updated: 2025/04/29 17:37:23 by picarlie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,25 @@ void	vertical_check(t_ray *ray, t_map map, t_player player)
 	return ;
 }
 
+/*  */
+void	wall_strips(t_ray *ray)
+{
+	(*ray).wall_top_pixel = (WIN_HEIGHT / 2) - ((*ray).wall_strip_height / 2);
+	(*ray).wall_bottom_pixel = (WIN_HEIGHT / 2) + ((*ray).wall_strip_height / 2);
+
+	if ((*ray).wall_top_pixel < 0)
+		(*ray).wall_top_pixel = 0;
+
+	if ((*ray).wall_bottom_pixel > WIN_HEIGHT)
+		(*ray).wall_bottom_pixel = WIN_HEIGHT;
+}
+
+/*  */
+void	render_wall(mlx, nb_ray)
+{
+	return ();
+}
+
 /* Takes the mlx, ray, map and player structures */
 /* Cast each ray of the FOV with fisheye effect corrected */
 void	ray_iteration(t_mlx *mlx, t_ray *ray, t_map map, t_player player)
@@ -94,6 +113,7 @@ void	ray_iteration(t_mlx *mlx, t_ray *ray, t_map map, t_player player)
 		horizontal_check(ray, map, player);
 		vertical_check(ray, map, player);
 		(*ray).dist = (*ray).dist * cos(norm_angle((*ray).angle - player.p_angle));
+		wall_strips(ray);
 		render_wall(mlx, nb_ray);
 		nb_ray++;
 		(*ray).angle += (FOV * M_PI / 180) / map.map_width;

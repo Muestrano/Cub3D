@@ -6,7 +6,7 @@
 /*   By: picarlie <picarlie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:54:44 by picarlie          #+#    #+#             */
-/*   Updated: 2025/04/28 17:41:30 by picarlie         ###   ########.fr       */
+/*   Updated: 2025/04/29 17:43:51 by picarlie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 
 # define TILE_SIZE 30 // Size of a tile (in pixels)
 # define FOV 60 // Field of view
+# define WIN_WIDTH 1920 // WIDTH of the window
+# define WIN_HEIGHT 1080 // HEIGHT of the window
 
 /*differencier les infos de la map avec les textures */
 typedef struct s_map
@@ -52,10 +54,15 @@ typedef struct s_texture
 
 /* Ray structure */
 /* Contains the angle of a ray and the distance to the wall  */
+/* Contains the positions of the top and bot pixels of a wall strip (ray) */
+/* Contains the height of the wall strip */
 typedef struct s_ray
 {
 	double	angle;
 	double	dist;
+	int		wall_strip_height;
+	int		wall_top_pixel;
+	int		wall_bottom_pixel;
 }	t_ray;
 
 /* Player raycasting structure */
