@@ -6,7 +6,7 @@
 /*   By: picarlie <picarlie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 16:34:33 by picarlie          #+#    #+#             */
-/*   Updated: 2025/04/28 17:41:13 by picarlie         ###   ########.fr       */
+/*   Updated: 2025/05/06 13:53:42 by picarlie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ void	norm_angle(double *angle)
 	float	pi;
 
 	pi = M_PI;
-	if (*angle >= (2 * pi))
+	while (*angle >= (2 * pi)) //remplace les if par des while
 		*angle -= 2 * pi;
-	else if (*angle < 0)
+	while (*angle < 0)
 		*angle += 2 * pi;
 }

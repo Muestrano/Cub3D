@@ -6,7 +6,7 @@
 /*   By: picarlie <picarlie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 13:56:28 by picarlie          #+#    #+#             */
-/*   Updated: 2025/04/29 17:45:40 by picarlie         ###   ########.fr       */
+/*   Updated: 2025/05/06 13:50:19 by picarlie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,12 +94,6 @@ void	wall_strips(t_ray *ray)
 		(*ray).wall_bottom_pixel = WIN_HEIGHT;
 }
 
-/*  */
-void	render_wall(mlx, nb_ray)
-{
-	return ();
-}
-
 /* Takes the mlx, ray, map and player structures */
 /* Cast each ray of the FOV with fisheye effect corrected */
 void	ray_iteration(t_mlx *mlx, t_ray *ray, t_map map, t_player player)
@@ -135,5 +129,4 @@ void	ray_iteration(t_mlx *mlx, t_ray *ray, t_map map, t_player player)
 }*/
 
 // A FAIIIIIIIIIIIIIIRE
-// Wall projection
 // Check dans quelle orientation le wall est hit par le ray pour appliquer la bonne texture
