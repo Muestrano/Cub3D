@@ -6,7 +6,7 @@
 /*   By: picarlie <picarlie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 17:36:26 by picarlie          #+#    #+#             */
-/*   Updated: 2025/04/28 17:59:25 by picarlie         ###   ########.fr       */
+/*   Updated: 2025/05/07 15:00:37 by picarlie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,3 @@ void	down_movements(t_player *player)
 }
 // /!\ /!\ /!\ A FAIRE /!\ /!\ /!\
 // Mettre une protection pour les mouvements (check si wall ou obstacle)
-// Coder les mouvements droite et gauche
