@@ -1,32 +1,51 @@
 
 NAME = cub3D
+
+# Répertoires
 DIR_SRC = src/
 DIR_OBJ = obj/
+DIR_MLX = ./ress/minilibx-linux/
+DIR_INC = includes/
+
+# Compilateur et flags
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -I$(DIR_INC) -I$(DIR_MLX)
+
+# Librairies à linker
+MLX_FLAGS = -L$(DIR_MLX) -lmlx -lm -lXext -lX11
+
+# Outils
 RM = rm -f
+MKDIR = mkdir -p
 
-SRCS =  $(wildcard $(DIR_SRC)*.c) \
-		$(wildcard $(DIR_SRC)/parsing/*.c) \
-		$(wildcard $(DIR_SRC)/utils/*.c) \
+# Sources
+SRCS = $(wildcard $(DIR_SRC)*.c) \
+       $(wildcard $(DIR_SRC)/parsing/*.c) \
+       $(wildcard $(DIR_SRC)/utils/*.c) \
+	   $(wildcard $(DIR_SRC)/minilibx/*.c)
 
+# Objets
 OBJS = $(SRCS:$(DIR_SRC)%.c=$(DIR_OBJ)%.o)
 
+# Règle par défaut
 all: $(NAME)
-	@clear
 
+# Compilation de l'exécutable
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(MLX_FLAGS)
+
+# Compilation des objets
 $(DIR_OBJ)%.o: $(DIR_SRC)%.c
-	@mkdir -p $(dir $@)
+	@$(MKDIR) $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
-
+# Nettoyage
 clean:
-	rm -rf $(DIR_OBJ)
+	$(RM) -r $(DIR_OBJ)
 
 fclean: clean
 	$(RM) $(NAME)
 
 re: fclean all
+
+.PHONY: all clean fclean re

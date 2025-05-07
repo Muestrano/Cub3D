@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: picarlie <picarlie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mabenet <mabenet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:54:44 by picarlie          #+#    #+#             */
-/*   Updated: 2025/04/29 17:43:51 by picarlie         ###   ########.fr       */
+/*   Updated: 2025/05/07 16:46:07 by mabenet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,16 @@ typedef struct s_player
 	int		p_y;
 	double	p_angle;
 }	t_player;
+
+
+/*s_data, structure for mlx img*/
+typedef struct	s_data {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_data;
 
 // /* Player struct in the game */
 // /* Define the player position in the map (in tiles) */
@@ -145,5 +155,8 @@ void	norm_angle(double *angle);
 // void	horizontal_check(t_ray *ray, t_map map, t_player player);
 // void	vertical_check(t_ray *ray, t_map map, t_player player);
 // void	ray_iteration(t_mlx *mlx, t_ray *ray, t_map map, t_player player);
+
+/*MLX Function*/
+void init_data(t_data **data);
 
 #endif

@@ -7,19 +7,22 @@ int main(int ac, char **av)
 		write(2, "Error\nWrong number of arguments\n", 33);
 		return (1);
 	}
+
+	t_data *data;
 	t_map *map;
 	t_texture *texture;
 	// t_game *game;
 	// t_player *player;
 	int fd;
 
+
 	init_map(&map);
 	init_texture(&texture);
-
+	init_data(&data);
 	// init_game(&game);
 	// init_player(&player);
 	// init_ray(&ray);
-	// init_mlx(&mlx);
+
 
 
 	fd = open_args(ac, av, map);
