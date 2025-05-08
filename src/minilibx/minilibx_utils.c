@@ -12,7 +12,7 @@
 
 #include "../../includes/cub3D.h"
 
-void init_data(t_data **data)
-{
+// void init_data(t_data **data)
+// {
 	
-}
+// }

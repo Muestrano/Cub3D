@@ -8,7 +8,7 @@ int main(int ac, char **av)
 		return (1);
 	}
 
-	t_data *data;
+	// t_data *data;
 	t_map *map;
 	t_texture *texture;
 	// t_game *game;
@@ -18,7 +18,7 @@ int main(int ac, char **av)
 
 	init_map(&map);
 	init_texture(&texture);
-	init_data(&data);
+	// init_data(&data);
 	// init_game(&game);
 	// init_player(&player);
 	// init_ray(&ray);
