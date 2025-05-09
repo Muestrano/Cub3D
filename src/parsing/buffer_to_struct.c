@@ -13,13 +13,13 @@ void extract_texture(char *buffer, t_texture *texture)
     while (lines[i])
     {
         if (ft_strncmp(lines[i], "NO ", 3) == 0)
-            texture->NORTH = ft_strdup(lines[i] + 3);
+            texture->north = ft_strdup(lines[i] + 3);
         else if (ft_strncmp(lines[i], "SO ", 3) == 0)
-            texture->SOUTH = ft_strdup(lines[i] + 3);
+            texture->south = ft_strdup(lines[i] + 3);
         else if (ft_strncmp(lines[i], "WE ", 3) == 0)
-            texture->WEST = ft_strdup(lines[i] + 3);
+            texture->west = ft_strdup(lines[i] + 3);
         else if (ft_strncmp(lines[i], "EA ", 3) == 0)
-            texture->EAST = ft_strdup(lines[i] + 3);
+            texture->east = ft_strdup(lines[i] + 3);
         else if (ft_strncmp(lines[i], "F ", 2) == 0)
             texture->floor = ft_strdup(lines[i] + 2); 
         else if (ft_strncmp(lines[i], "C ", 2) == 0)

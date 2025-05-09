@@ -2,10 +2,10 @@
 
 void print_texture(t_texture texture)
 {
-    printf("NORTH: %s\n", texture.NORTH);
-    printf("SOUTH: %s\n", texture.SOUTH);
-    printf("WEST: %s\n", texture.WEST);
-    printf("EAST: %s\n", texture.EAST);
+    printf("NORTH: %s\n", texture.north);
+    printf("SOUTH: %s\n", texture.south);
+    printf("WEST: %s\n", texture.west);
+    printf("EAST: %s\n", texture.east);
     printf("FLOOR: %s\n", texture.floor);
     printf("CEILING: %s\n", texture.ceiling);
     printf("---------------------\n");

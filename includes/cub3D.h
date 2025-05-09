@@ -44,10 +44,10 @@ typedef struct s_map
 /* Contains the path to the textures */
 typedef struct s_texture
 {
-	char	*SOUTH;
-	char	*NORTH;
-	char	*WEST;
-	char	*EAST;
+	char	*south;
+	char	*north;
+	char	*west;
+	char	*east;
 	char	*floor;
 	char	*ceiling;
 }	t_texture;
@@ -78,13 +78,14 @@ typedef struct s_player
 
 
 /*s_data, structure for mlx img*/
-typedef struct	s_data {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_data;
+typedef struct    s_data {
+    void    *img;
+    char    addr;
+    int        bits_per_pixel;
+    int        line_length;
+    int        endian;
+}                t_data;
+
 
 // /* Player struct in the game */
 // /* Define the player position in the map (in tiles) */
@@ -124,7 +125,9 @@ void 	verify_map(t_map *map);
 void	extract_texture(char *buffer, t_texture *texture);
 void	extract_map(char *buffer, t_map *map);
 void	parse_map(t_map *map);
+void	check_opti_map(char **map_brute);
 void	replace_position(t_map *map, int i, int j);
+int 	invalid_wall(char **map_brute);
 
 
 /*	Free function*/	

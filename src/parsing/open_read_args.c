@@ -77,10 +77,10 @@ void init_texture(t_texture **texture)
         write(2, "Error\nFailed to allocate memory for texture\n", 43);
         exit(1);
     }
-    (*texture)->SOUTH = NULL;
-    (*texture)->NORTH = NULL;
-    (*texture)->WEST = NULL;
-    (*texture)->EAST = NULL;
+    (*texture)->south = NULL;
+    (*texture)->north = NULL;
+    (*texture)->west = NULL;
+    (*texture)->east = NULL;
     (*texture)->floor =NULL;
     (*texture)->ceiling = NULL;
 }

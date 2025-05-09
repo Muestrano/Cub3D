@@ -90,8 +90,6 @@ char	*ft_strdup(const char *s1)
 	i = 0;
 	while (s1[i])
 	{
-		while(s1[i] == ' ')
-			i++;
 		str[i] = s1[i];
 		i++;
 	}

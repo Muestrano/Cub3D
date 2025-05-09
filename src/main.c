@@ -6,6 +6,15 @@ int close_window(void *param)
     exit(0); // Quitte proprement le programme
 }
 
+
+// void    my_mlx_pixel_put(t_datadata, int x, int y, int color)
+// {
+//     char    dst;
+
+//     dst = data->addr + (y data->line_length + x * (data->bits_per_pixel / 8));
+//     (unsigned int)dst = color;
+// }
+
 int main(int ac, char **av)
 {
     if (ac != 2)
@@ -29,7 +38,7 @@ int main(int ac, char **av)
 
     // Exemple d'utilisation de mlx_win : gestion de la fermeture de la fenêtre
     mlx_hook(mlx_win, 17, 0, close_window, NULL); // Fermer avec la croix
-    mlx_loop(mlx);
+   
 
     fd = open_args(ac, av, map);
     read_args(fd, map);
@@ -39,8 +48,15 @@ int main(int ac, char **av)
     print_map(map);
     verify_map(map);
     parse_map(map);
+	check_opti_map(map->map_brute);
+	if(invalid_wall(map->map_brute) == 0)
+	{
+		printf("Error\nInvalid wall in the map\n");
+		exit(1);
+	}
     print_map(map);
 
+	mlx_loop(mlx);
     close(fd);
     return (0);
 }
