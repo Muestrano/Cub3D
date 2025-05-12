@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabenet <mabenet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: picarlie <picarlie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:54:44 by picarlie          #+#    #+#             */
-/*   Updated: 2025/05/07 16:46:07 by mabenet          ###   ########.fr       */
+/*   Updated: 2025/05/12 15:53:30 by picarlie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,13 +78,13 @@ typedef struct s_player
 
 
 /*s_data, structure for mlx img*/
-typedef struct    s_data {
-    void    *img;
-    char    addr;
-    int        bits_per_pixel;
-    int        line_length;
-    int        endian;
-}                t_data;
+typedef struct	s_data {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_data;
 
 
 // /* Player struct in the game */
