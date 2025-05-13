@@ -76,6 +76,7 @@ typedef struct s_player
 	int		p_x;
 	int		p_y;
 	double	p_angle;
+	char	orientation;
 }	t_player;
 
 
@@ -91,9 +92,12 @@ typedef struct	s_data {
 /* MLX structure */
 typedef struct s_mlx
 {
-	void	*ptr;
-	void	*win_ptr;
-	t_data	img;
+	void		*ptr;
+	void		*win_ptr;
+	t_data		img;
+	t_player	player;
+	t_map		map;
+
 }				t_mlx;
 
 // /* Player struct in the game */
@@ -160,6 +164,9 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_atoi(char *str);
 char	*ft_strcpy(char *src);
 
+/* get_init */
+void init_player(t_player *player, t_map *map);
+
 /* raycasting_utils */
 int		step_sign(double angle, char c);
 void	norm_angle(double *angle);
@@ -184,7 +191,7 @@ void up_movements(t_player *player, t_map map);
 void down_movements(t_player *player, t_map map);
 void right_movements(t_player *player, t_map map);
 void left_movements(t_player *player, t_map map);
-int  ft_key(int key, t_player *player, t_map map);
+int  ft_key(int key, t_mlx *mlx);
 
 /*player_rotation*/
 void right_rot_angle(t_player *player);

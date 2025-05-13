@@ -42,15 +42,15 @@ void	horizontal_check(t_ray *ray, t_map map, t_player player)
 	int	y_step;
 
 	a_y = floor(player.p_y / TILE_SIZE) * TILE_SIZE;
-	a_x = player.p_x + ((a_y - player.p_y) / tan((*ray).angle));
-	y_step = TILE_SIZE * step_sign((*ray).angle, 'y');
-	x_step = (y_step / tan((*ray).angle)) * step_sign((*ray).angle, 'x');
+	a_x = player.p_x + ((a_y - player.p_y) / tan(ray->angle));
+	y_step = TILE_SIZE * step_sign(ray->angle, 'y');
+	x_step = (y_step / tan(ray->angle) * step_sign(ray->angle, 'x'));
 	while (!is_wall(a_x, a_y, map))
 	{
 		a_x += x_step;
 		a_y += y_step;
 	}
-	(*ray).dist = sqrt(pow(player.p_x - a_x, 2) + pow(player.p_y - a_y, 2)); //Checker si la valeur est bien sauvegardee grace au ptr
+	ray->dist = sqrt(pow(player.p_x - a_x, 2) + pow(player.p_y - a_y, 2)); //Checker si la valeur est bien sauvegardee grace au ptr
 	return ;
 }
 
@@ -66,32 +66,32 @@ void	vertical_check(t_ray *ray, t_map map, t_player player)
 	double	new_dist;
 
 	a_x = floor(player.p_y / TILE_SIZE) * TILE_SIZE;
-	a_y = player.p_y + ((a_x - player.p_x) / tan((*ray).angle));
-	x_step = TILE_SIZE * step_sign((*ray).angle, 'x');
-	y_step = (x_step / tan((*ray).angle)) * step_sign((*ray).angle, 'y');
+	a_y = player.p_y + ((a_x - player.p_x) / tan(ray->angle));
+	x_step = TILE_SIZE * step_sign(ray->angle, 'x');
+	y_step = (x_step / tan(ray->angle) * step_sign(ray->angle, 'y'));
 	while (!is_wall(a_x, a_y, map))
 	{
 		a_x += x_step;
 		a_y += y_step;
 	}
 	new_dist = sqrt(pow(player.p_x - a_x, 2) + pow(player.p_y - a_y, 2));
-	if (new_dist < (*ray).dist)
-		(*ray).dist = new_dist;
-	return ;
+	if (new_dist < ray->dist)
+		ray->dist = new_dist;
+	return;
 }
 
 /*  */
 void	wall_strips(t_ray *ray)
 {
-	(*ray).wall_strip_height = WIN_HEIGHT / (*ray).dist;
-	(*ray).wall_top_pixel = (WIN_HEIGHT / 2) - ((*ray).wall_strip_height / 2);
-	(*ray).wall_bottom_pixel = (WIN_HEIGHT / 2) + ((*ray).wall_strip_height / 2);
+	ray->wall_strip_height = WIN_HEIGHT / ray->dist;
+	ray->wall_top_pixel = (WIN_HEIGHT / 2) - (ray->wall_strip_height / 2);
+	ray->wall_bottom_pixel = (WIN_HEIGHT / 2) + (ray->wall_strip_height / 2);
 
-	if ((*ray).wall_top_pixel < 0)
-		(*ray).wall_top_pixel = 0;
+	if (ray->wall_top_pixel < 0)
+		ray->wall_top_pixel = 0;
 
-	if ((*ray).wall_bottom_pixel > WIN_HEIGHT)
-		(*ray).wall_bottom_pixel = WIN_HEIGHT;
+	if (ray->wall_bottom_pixel > WIN_HEIGHT)
+		ray->wall_bottom_pixel = WIN_HEIGHT;
 }
 
 /* Takes the mlx, ray, map and player structures */
@@ -102,20 +102,20 @@ void	ray_iteration(t_mlx *mlx, t_ray *ray, t_map map, t_player player)
 	double	fish_angle;
 
 	nb_ray = 0;
-	(*ray).angle = player.p_angle - ((FOV * M_PI / 180) / 2);
-	norm_angle(&((*ray).angle));
+	ray->angle = player.p_angle - ((FOV * M_PI / 180) / 2);
+	norm_angle(&(ray->angle));
 	while (nb_ray < map.map_width)
 	{
 		horizontal_check(ray, map, player);
 		vertical_check(ray, map, player);
-		fish_angle = (*ray).angle - player.p_angle;
+		fish_angle = ray->angle - player.p_angle;
 		norm_angle(&fish_angle);
-		(*ray).dist = (*ray).dist * cos(fish_angle);
+		ray->dist = ray->dist * cos(fish_angle);
 		wall_strips(ray);
 		(void)mlx;
 		// render_wall(mlx, nb_ray);
 		nb_ray++;
-		(*ray).angle += (FOV * M_PI / 180) / map.map_width;
+		ray->angle += (FOV * M_PI / 180) / map.map_width;
 	}
 }
 

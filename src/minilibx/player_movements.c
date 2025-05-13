@@ -19,19 +19,19 @@ void	up_movements(t_player *player, t_map map)
 	int	x;
 	int	y;
 
-	x = floor((*player).p_x + (cos((*player).p_angle) * step_sign((*player).p_angle, 'x') * playerSpeed));
-	y = floor((*player).p_y + (sin((*player).p_angle) * step_sign((*player).p_angle, 'y') * playerSpeed));
+	x = floor(player->p_x + (cos(player->p_angle) * step_sign(player->p_angle, 'x') * playerSpeed));
+	y = floor(player->p_y + (sin(player->p_angle) * step_sign(player->p_angle, 'y') * playerSpeed));
 	if (!is_wall(x, y, map))
 	{
-		(*player).p_x = x;
-		(*player).p_y = y;
+		player->p_x = x;
+		player->p_y = y;
 	}
 	else
 	{
-		if (!is_wall((*player).p_x, y, map))
-			(*player).p_y = y;
-		else if (!is_wall(x, (*player).p_y, map))
-			(*player).p_x = x;
+		if (!is_wall(player->p_x, y, map))
+			player->p_y = y;
+		else if (!is_wall(x, player->p_y, map))
+			player->p_x = x;
 	}
 	return ;
 }
@@ -43,19 +43,19 @@ void	down_movements(t_player *player, t_map map)
 	int	x;
 	int	y;
 
-	x = floor((*player).p_x - (cos((*player).p_angle) * step_sign((*player).p_angle, 'x') * playerSpeed));
-	y = floor((*player).p_y - (sin((*player).p_angle) * step_sign((*player).p_angle, 'y') * playerSpeed));
+	x = floor(player->p_x - (cos(player->p_angle) * step_sign(player->p_angle, 'x') * playerSpeed));
+	y = floor(player->p_y - (sin(player->p_angle) * step_sign(player->p_angle, 'y') * playerSpeed));
 	if (!is_wall(x, y, map))
 	{
-		(*player).p_x = x;
-		(*player).p_y = y;
+		player->p_x = x;
+		player->p_y = y;
 	}
 	else
 	{
-		if (!is_wall((*player).p_x, y, map))
-			(*player).p_y = y;
-		else if (!is_wall(x, (*player).p_y, map))
-			(*player).p_x = x;
+		if (!is_wall(player->p_x, y, map))
+			player->p_y = y;
+		else if (!is_wall(x, player->p_y, map))
+			player->p_x = x;
 	}
 	return ;
 }
@@ -67,19 +67,19 @@ void	right_movements(t_player *player, t_map map)
 	int	x;
 	int	y;
 
-	x = floor((*player).p_x + (cos((*player).p_angle + (M_PI / 2)) * step_sign((*player).p_angle, 'x') * playerSpeed));
-	y = floor((*player).p_y + (sin((*player).p_angle + (M_PI / 2)) * step_sign((*player).p_angle, 'y') * playerSpeed));
+	x = floor(player->p_x + (cos(player->p_angle + (M_PI / 2)) * step_sign(player->p_angle, 'x') * playerSpeed));
+	y = floor(player->p_y + (sin(player->p_angle + (M_PI / 2)) * step_sign(player->p_angle, 'y') * playerSpeed));
 	if (!is_wall(x, y, map))
 	{
-		(*player).p_x = x;
-		(*player).p_y = y;
+		player->p_x = x;
+		player->p_y = y;
 	}
 	else
 	{
-		if (!is_wall((*player).p_x, y, map))
-			(*player).p_y = y;
-		else if (!is_wall(x, (*player).p_y, map))
-			(*player).p_x = x;
+		if (!is_wall(player->p_x, y, map))
+			player->p_y = y;
+		else if (!is_wall(x, player->p_y, map))
+			player->p_x = x;
 	}
 	return ;
 }
@@ -91,37 +91,37 @@ void	left_movements(t_player *player, t_map map)
 	int	x;
 	int	y;
 
-	x = floor((*player).p_x + (cos((*player).p_angle - (M_PI / 2)) * step_sign((*player).p_angle, 'x') * playerSpeed));
-	y = floor((*player).p_y + (sin((*player).p_angle - (M_PI / 2)) * step_sign((*player).p_angle, 'y') * playerSpeed));
+	x = floor(player->p_x + (cos(player->p_angle - (M_PI / 2)) * step_sign(player->p_angle, 'x') * playerSpeed));
+	y = floor(player->p_y + (sin(player->p_angle - (M_PI / 2)) * step_sign(player->p_angle, 'y') * playerSpeed));
 	if (!is_wall(x, y, map))
 	{
-		(*player).p_x = x;
-		(*player).p_y = y;
+		player->p_x = x;
+		player->p_y = y;
 	}
 	else
 	{
-		if (!is_wall((*player).p_x, y, map))
-			(*player).p_y = y;
-		else if (!is_wall(x, (*player).p_y, map))
-			(*player).p_x = x;
+		if (!is_wall(player->p_x, y, map))
+			player->p_y = y;
+		else if (!is_wall(x, player->p_y, map))
+			player->p_x = x;
 	}
 	return ;
 }
 
-int	ft_key(int key, t_player *player, t_map map)
+int	ft_key(int key, t_mlx *mlx)
 {
 	if (key == XK_w)
-		up_movements(player, map);
+		up_movements(&(mlx->player), mlx->map);
 	else if (key == XK_s)
-		down_movements(player, map);
+		down_movements(&(mlx->player), mlx->map);
 	else if (key == XK_d)
-		right_movements(player, map);
+		right_movements(&(mlx->player), mlx->map);
 	else if (key == XK_a)
-		left_movements(player, map);
+		left_movements(&(mlx->player), mlx->map);
 	else if (key == XK_e)
-		right_rot_angle(player);
+		right_rot_angle(&(mlx->player));
 	else if (key == XK_q)
-		left_rot_angle(player);
+		left_rot_angle(&(mlx->player));
 	else if (key == XK_Escape)
         exit(0);
 		// ft_exit(data, "Merci d'avoir joué au jeu!", EXIT_SUCCESS);

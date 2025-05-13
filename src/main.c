@@ -12,14 +12,6 @@
 
 #include "../includes/cub3D.h"
 
-int close_window(void *param)
-{
-    (void)param;
-    exit(0); // Quitte proprement le programme
-    //close (fd) et frees.
-}
-
-
 int main(int ac, char **av)
 {
     if (ac != 2)
@@ -32,14 +24,12 @@ int main(int ac, char **av)
     t_texture *texture;
     int fd;
     t_mlx	mlx;
+	t_player	player;
 
     init_map(&map);
     init_texture(&texture);
+	init_player(&player, map);
     init_mlx(&mlx);
-
-    // Exemple d'utilisation de mlx_win : gestion de la fermeture de la fenêtre
-    mlx_hook(mlx.win_ptr, 17, 0, close_window, NULL); // Fermer avec la croix
-   
 
     fd = open_args(ac, av, map);
     // read_args(fd, map);
