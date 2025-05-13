@@ -108,10 +108,24 @@
 // 	return ;
 // }
 
-
-
-
-
+int	ft_key(int key, t_player *player, t_map map)
+{
+	if (key == XK_w)
+		up_movements(player, map);
+	else if (key == XK_s)
+		down_movements(player, map);
+	else if (key == XK_d)
+		right_movements(player, map);
+	else if (key == XK_a)
+		left_movements(player, map);
+	else if (key == XK_e)
+		rotate_right(data);
+	else if (key == XK_q)
+		rotate_left(data);
+	else if (key == XK_Escape)
+		ft_exit(data, "Merci d'avoir joué au jeu!", EXIT_SUCCESS);
+	return (1);
+}
 
 // https://ismailassil.medium.com/ray-casting-c-8bfae2c2fc13 pour les player movement
 // Second, Forward/Backward Movements — it is resolved based on the current position of the player, rotation angle and the up and down direction.

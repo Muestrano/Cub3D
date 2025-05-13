@@ -169,4 +169,15 @@ void my_mlx_pixel_put(t_data *data, int x, int y, int color);
 /*draw_wall*/
 void draw_text(t_data *data, t_img *imgtext, int x, int y);
 
+/*player_movements*/
+void up_movements(t_player *player, t_map map);
+void down_movements(t_player *player, t_map map);
+void right_movements(t_player *player, t_map map);
+void left_movements(t_player *player, t_map map);
+int  ft_key(int key, t_player *player, t_map map);
+
+/*player_rotation*/
+void right_rot_angle(t_player *player);
+void left_rot_angle(t_player *player);
+
 #endif
