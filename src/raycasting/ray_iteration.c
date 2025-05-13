@@ -98,7 +98,8 @@ void	wall_strips(t_ray *ray)
 /* Cast each ray of the FOV with fisheye effect corrected */
 void	ray_iteration(t_mlx *mlx, t_ray *ray, t_map map, t_player player)
 {
-	int	nb_ray;
+	int		nb_ray;
+	double	fish_angle;
 
 	nb_ray = 0;
 	(*ray).angle = player.p_angle - ((FOV * M_PI / 180) / 2);
@@ -107,9 +108,12 @@ void	ray_iteration(t_mlx *mlx, t_ray *ray, t_map map, t_player player)
 	{
 		horizontal_check(ray, map, player);
 		vertical_check(ray, map, player);
-		(*ray).dist = (*ray).dist * cos(norm_angle((*ray).angle - player.p_angle));
+		fish_angle = (*ray).angle - player.p_angle;
+		norm_angle(&fish_angle);
+		(*ray).dist = (*ray).dist * cos(fish_angle);
 		wall_strips(ray);
-		render_wall(mlx, nb_ray);
+		(void)mlx;
+		// render_wall(mlx, nb_ray);
 		nb_ray++;
 		(*ray).angle += (FOV * M_PI / 180) / map.map_width;
 	}
