@@ -54,12 +54,6 @@ int main(int ac, char **av)
     print_map(map);
     verify_map(map);
     parse_map(map);
-	check_opti_map(map->map_brute);
-	if(invalid_wall(map->map_brute) == 1)
-	{
-		printf("Error\nInvalid wall in the map\n");
-		exit(1);
-	}
     print_map(map);
 
 	mlx_loop(mlx);

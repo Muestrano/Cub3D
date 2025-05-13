@@ -46,3 +46,4 @@ void replace_position(t_map *map, int i, int j)
     printf("Initial position:(x, y) (%d, %d)\n", map->x_init, map->y_init);
 }
 
+
