@@ -22,7 +22,8 @@ MKDIR = mkdir -p
 SRCS = $(wildcard $(DIR_SRC)*.c) \
        $(wildcard $(DIR_SRC)/parsing/*.c) \
        $(wildcard $(DIR_SRC)/utils/*.c) \
-	   $(wildcard $(DIR_SRC)/minilibx/*.c)
+	   $(wildcard $(DIR_SRC)/minilibx/*.c) \
+	   $(wildcard $(DIR_SRC)/raycasting/*.c) \
 
 # Objets
 OBJS = $(SRCS:$(DIR_SRC)%.c=$(DIR_OBJ)%.o)
