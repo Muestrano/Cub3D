@@ -26,6 +26,8 @@
 # define FOV 60 // Field of view
 # define WIN_WIDTH 1920 // WIDTH of the window
 # define WIN_HEIGHT 1080 // HEIGHT of the window
+# define playerSpeed 1
+# define rot_speed 0.5
 
 /*differencier les infos de la map avec les textures */
 typedef struct s_map
@@ -86,6 +88,12 @@ typedef struct	s_data {
 	int		endian;
 }				t_data;
 
+/* MLX structure */
+typedef struct s_mlx
+{
+	void	*ptr;
+	void	*win_ptr;
+}				t_mlx;
 
 // /* Player struct in the game */
 // /* Define the player position in the map (in tiles) */
@@ -156,10 +164,10 @@ int		step_sign(double angle, char c);
 void	norm_angle(double *angle);
 
 /* raycasting_iteration */
-// int		is_wall(double x_inter, double y_inter, t_map map);
-// void	horizontal_check(t_ray *ray, t_map map, t_player player);
-// void	vertical_check(t_ray *ray, t_map map, t_player player);
-// void	ray_iteration(t_mlx *mlx, t_ray *ray, t_map map, t_player player);
+int		is_wall(double x_inter, double y_inter, t_map map);
+void	horizontal_check(t_ray *ray, t_map map, t_player player);
+void	vertical_check(t_ray *ray, t_map map, t_player player);
+void	ray_iteration(t_mlx *mlx, t_ray *ray, t_map map, t_player player);
 
 /*MLX Function*/
 /*minilibx_utils*/

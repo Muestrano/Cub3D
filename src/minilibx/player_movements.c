@@ -14,99 +14,99 @@
 
 /* Takes the player structure */
 /* Change the coordinates of the player moving forward */
-// void	up_movements(t_player *player, t_map map)
-// {
-// 	int	x;
-// 	int	y;
+void	up_movements(t_player *player, t_map map)
+{
+	int	x;
+	int	y;
 
-// 	x = floor((*player).p_x + (cos((*player).p_angle) * step_sign((*player).p_angle, x) * playerSpeed));
-// 	y = floor((*player).p_y + (sin((*player).p_angle) * step_sign((*player).p_angle, y) * playerSpeed));
-// 	if (!is_wall(x, y, map))
-// 	{
-// 		(*player).p_x = x;
-// 		(*player).p_y = y;
-// 	}
-// 	else
-// 	{
-// 		if (!is_wall((*player).p_x, y, map))
-// 			(*player).p_y = y;
-// 		else if (!is_wall((x, (*player).p_y, map)))
-// 			(*player).p_x = x;
-// 	}
-// 	return ;
-// }
+	x = floor((*player).p_x + (cos((*player).p_angle) * step_sign((*player).p_angle, 'x') * playerSpeed));
+	y = floor((*player).p_y + (sin((*player).p_angle) * step_sign((*player).p_angle, 'y') * playerSpeed));
+	if (!is_wall(x, y, map))
+	{
+		(*player).p_x = x;
+		(*player).p_y = y;
+	}
+	else
+	{
+		if (!is_wall((*player).p_x, y, map))
+			(*player).p_y = y;
+		else if (!is_wall(x, (*player).p_y, map))
+			(*player).p_x = x;
+	}
+	return ;
+}
 
 // /* Takes the player structure */
 // /* Change the coordinates of the player moving backward */
-// void	down_movements(t_player *player, t_map map)
-// {
-// 	int	x;
-// 	int	y;
+void	down_movements(t_player *player, t_map map)
+{
+	int	x;
+	int	y;
 
-// 	x = floor((*player).p_x - (cos((*player).p_angle) * step_sign((*player).p_angle, x) * playerSpeed));
-// 	y = floor((*player).p_y - (sin((*player).p_angle) * step_sign((*player).p_angle, y) * playerSpeed));
-// 	if (!is_wall(x, y, map))
-// 	{
-// 		(*player).p_x = x;
-// 		(*player).p_y = y;
-// 	}
-// 	else
-// 	{
-// 		if (!is_wall((*player).p_x, y, map))
-// 			(*player).p_y = y;
-// 		else if (!is_wall((x, (*player).p_y, map)))
-// 			(*player).p_x = x;
-// 	}
-// 	return ;
-// }
+	x = floor((*player).p_x - (cos((*player).p_angle) * step_sign((*player).p_angle, 'x') * playerSpeed));
+	y = floor((*player).p_y - (sin((*player).p_angle) * step_sign((*player).p_angle, 'y') * playerSpeed));
+	if (!is_wall(x, y, map))
+	{
+		(*player).p_x = x;
+		(*player).p_y = y;
+	}
+	else
+	{
+		if (!is_wall((*player).p_x, y, map))
+			(*player).p_y = y;
+		else if (!is_wall(x, (*player).p_y, map))
+			(*player).p_x = x;
+	}
+	return ;
+}
 
 // /* Takes the player structure */
 // /* Change the coordinates of the player moving to the right */
-// void	right_movements(t_player *player, t_map map)
-// {
-// 	int	x;
-// 	int	y;
+void	right_movements(t_player *player, t_map map)
+{
+	int	x;
+	int	y;
 
-// 	x = floor((*player).p_x + (cos((*player).p_angle + (M_PI / 2)) * step_sign((*player).p_angle, x) * playerSpeed));
-// 	y = floor((*player).p_y + (sin((*player).p_angle + (M_PI / 2)) * step_sign((*player).p_angle, y) * playerSpeed));
-// 	if (!is_wall(x, y, map))
-// 	{
-// 		(*player).p_x = x;
-// 		(*player).p_y = y;
-// 	}
-// 	else
-// 	{
-// 		if (!is_wall((*player).p_x, y, map))
-// 			(*player).p_y = y;
-// 		else if (!is_wall((x, (*player).p_y, map)))
-// 			(*player).p_x = x;
-// 	}
-// 	return ;
-// }
+	x = floor((*player).p_x + (cos((*player).p_angle + (M_PI / 2)) * step_sign((*player).p_angle, 'x') * playerSpeed));
+	y = floor((*player).p_y + (sin((*player).p_angle + (M_PI / 2)) * step_sign((*player).p_angle, 'y') * playerSpeed));
+	if (!is_wall(x, y, map))
+	{
+		(*player).p_x = x;
+		(*player).p_y = y;
+	}
+	else
+	{
+		if (!is_wall((*player).p_x, y, map))
+			(*player).p_y = y;
+		else if (!is_wall(x, (*player).p_y, map))
+			(*player).p_x = x;
+	}
+	return ;
+}
 
 // /* Takes the player structure */
 // /* Change the coordinates of the player moving to the left */
-// void	left_movements(t_player *player, t_map map)
-// {
-// 	int	x;
-// 	int	y;
+void	left_movements(t_player *player, t_map map)
+{
+	int	x;
+	int	y;
 
-// 	x = floor((*player).p_x + (cos((*player).p_angle - (M_PI / 2)) * step_sign((*player).p_angle, x) * playerSpeed));
-// 	y = floor((*player).p_y + (sin((*player).p_angle - (M_PI / 2)) * step_sign((*player).p_angle, y) * playerSpeed));
-// 	if (!is_wall(x, y, map))
-// 	{
-// 		(*player).p_x = x;
-// 		(*player).p_y = y;
-// 	}
-// 	else
-// 	{
-// 		if (!is_wall((*player).p_x, y, map))
-// 			(*player).p_y = y;
-// 		else if (!is_wall((x, (*player).p_y, map)))
-// 			(*player).p_x = x;
-// 	}
-// 	return ;
-// }
+	x = floor((*player).p_x + (cos((*player).p_angle - (M_PI / 2)) * step_sign((*player).p_angle, 'x') * playerSpeed));
+	y = floor((*player).p_y + (sin((*player).p_angle - (M_PI / 2)) * step_sign((*player).p_angle, 'y') * playerSpeed));
+	if (!is_wall(x, y, map))
+	{
+		(*player).p_x = x;
+		(*player).p_y = y;
+	}
+	else
+	{
+		if (!is_wall((*player).p_x, y, map))
+			(*player).p_y = y;
+		else if (!is_wall(x, (*player).p_y, map))
+			(*player).p_x = x;
+	}
+	return ;
+}
 
 int	ft_key(int key, t_player *player, t_map map)
 {
@@ -119,11 +119,12 @@ int	ft_key(int key, t_player *player, t_map map)
 	else if (key == XK_a)
 		left_movements(player, map);
 	else if (key == XK_e)
-		rotate_right(data);
+		right_rot_angle(player);
 	else if (key == XK_q)
-		rotate_left(data);
+		left_rot_angle(player);
 	else if (key == XK_Escape)
-		ft_exit(data, "Merci d'avoir joué au jeu!", EXIT_SUCCESS);
+        exit(0);
+		// ft_exit(data, "Merci d'avoir joué au jeu!", EXIT_SUCCESS);
 	return (1);
 }
 
