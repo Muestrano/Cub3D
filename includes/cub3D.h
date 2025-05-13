@@ -93,6 +93,7 @@ typedef struct s_mlx
 {
 	void	*ptr;
 	void	*win_ptr;
+	t_data	img;
 }				t_mlx;
 
 // /* Player struct in the game */
@@ -171,7 +172,8 @@ void	ray_iteration(t_mlx *mlx, t_ray *ray, t_map map, t_player player);
 
 /*MLX Function*/
 /*minilibx_utils*/
-void init_data(void *mlx, void *mlx_win, t_data *img);
+// void init_mlx(void *mlx, void *mlx_win, t_data *img);
+void init_mlx(t_mlx *mlx);
 void my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 /*draw_wall*/

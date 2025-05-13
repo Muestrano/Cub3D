@@ -31,33 +31,28 @@ int main(int ac, char **av)
     t_map *map;
     t_texture *texture;
     int fd;
+    t_mlx	mlx;
 
     init_map(&map);
     init_texture(&texture);
+    init_mlx(&mlx);
 
-	void	*mlx;
-	void	*mlx_win;
-	t_data	img;
-
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, WIN_WIDTH, WIN_HEIGHT, "Cub3D");
-	init_data(mlx, mlx_win, &img);
     // Exemple d'utilisation de mlx_win : gestion de la fermeture de la fenêtre
-    mlx_hook(mlx_win, 17, 0, close_window, NULL); // Fermer avec la croix
+    mlx_hook(mlx.win_ptr, 17, 0, close_window, NULL); // Fermer avec la croix
    
 
     fd = open_args(ac, av, map);
-    read_args(fd, map);
-    extract_texture(map->buffer, texture);
-    verify_texture(texture);
-    extract_map(map->buffer, map);
-    print_map(map);
-    verify_map(map);
-    parse_map(map);
-    check_border_map(map->map_brute);
-    print_map(map);
+    // read_args(fd, map);
+    // extract_texture(map->buffer, texture);
+    // verify_texture(texture);
+    // extract_map(map->buffer, map);
+    // print_map(map);
+    // verify_map(map);
+    // parse_map(map);
+    // check_border_map(map->map_brute);
+    // print_map(map);
 
-	mlx_loop(mlx);
+	mlx_loop(mlx.ptr);
     close(fd);
     return (0);
 }
