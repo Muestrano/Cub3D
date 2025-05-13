@@ -54,6 +54,7 @@ int main(int ac, char **av)
     print_map(map);
     verify_map(map);
     parse_map(map);
+    check_border_map(map->map_brute);
     print_map(map);
 
 	mlx_loop(mlx);

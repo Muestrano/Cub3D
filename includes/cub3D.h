@@ -115,6 +115,8 @@ char	**init_mapbrute(t_map *map);
 void	print_map(t_map *map);
 void	print_texture(t_texture texture);
 void	print_struct(t_map map);
+void	check_border_map(char **map_brute);
+
 // void print_player(t_player player);
 // void print_game(t_game game);
 // void print_ray(t_ray ray);

@@ -46,4 +46,58 @@ void replace_position(t_map *map, int i, int j)
     printf("Initial position:(x, y) (%d, %d)\n", map->x_init, map->y_init);
 }
 
+int	is_player(char c)
+{
+	return (c == 'N' || c == 'S' || c == 'E' || c == 'W');
+}
 
+int	is_open_char(char c)
+{
+	return (c == '0' || is_player(c));
+}
+
+int	is_invalid_surrounding(char **map, int i, int j)
+{
+
+	// Vérifie la case du haut
+	if (i == 0 || j >= (int)strlen(map[i - 1]) || map[i - 1][j] == ' ')
+		return 1;
+
+	// Vérifie la case du bas
+	if (map[i + 1] == NULL || j >= (int)strlen(map[i + 1]) || map[i + 1][j] == ' ')
+		return 1;
+
+	// Vérifie la case à gauche
+	if (j == 0 || map[i][j - 1] == ' ')
+		return 1;
+
+	// Vérifie la case à droite
+	if (map[i][j + 1] == '\0' || map[i][j + 1] == ' ')
+		return 1;
+
+	return 0;
+}
+
+void	check_border_map(char **map)
+{
+	int i = 0;
+	int j;
+
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (is_open_char(map[i][j]))
+			{
+				if (is_invalid_surrounding(map, i, j))
+				{
+					printf("Error\nMap not closed at (%d, %d)\n", i, j);
+					exit(1);
+				}
+			}
+			j++;
+		}
+		i++;
+	}
+}
