@@ -108,8 +108,11 @@
 // 	return ;
 // }
 
-// /!\ /!\ /!\ A FAIRE /!\ /!\ /!
-// Mettre une protection pour les mouvements (check si wall ou obstacle)
+
+
+
+
+
 // https://ismailassil.medium.com/ray-casting-c-8bfae2c2fc13 pour les player movement
 // Second, Forward/Backward Movements — it is resolved based on the current position of the player, rotation angle and the up and down direction.
 // The cos(rotAngle) calculate the horizontal component of the movement direction.

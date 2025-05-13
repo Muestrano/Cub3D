@@ -28,21 +28,8 @@ void    init_data(void *mlx, void *mlx_win, t_data *img)
 	// mlx_win = mlx_new_window(mlx, WIN_WIDTH, WIN_HEIGHT, "Cub3D");
 	img->img = mlx_new_image(mlx, WIN_WIDTH, WIN_HEIGHT);
 	img->img = mlx_xpm_file_to_image(mlx, relative_path, &img_width, &img_height);
-	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel, &img->line_length,
-			&img->endian);
-	// t_data	*AAA;
-	// AAA->img = mlx_new_image(mlx, WIN_WIDTH, WIN_HEIGHT);
-	// AAA->addr = mlx_get_data_addr(AAA->img, &(AAA->bits_per_pixel), &(AAA->line_length),
-	// 		&(AAA->endian));
-	// AAA = &img;
-	// AAA++;
-	// AAA--;
-	// printf("AAA : %p\n", AAA);
-	// printf("AAA : %s\n", relative_path);
-	// my_mlx_pixel_put(AAA, WIN_WIDTH / 2, WIN_HEIGHT / 2, 0x00FF0000);
-	// mlx_put_image_to_window(mlx, mlx_win, AAA->img, 0, 0);
+	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel, &img->line_length, &img->endian);
 	// https://github.com/raveriss/cub3D/blob/main/srcs/draw/wall.c   Pour implementer le draw textures
-	// my_mlx_pixel_put(&img, WIN_WIDTH / 2, WIN_HEIGHT / 2, 0x00FF0000);
 	mlx_put_image_to_window(mlx, mlx_win, img->img, 0, 0);
 }
 
