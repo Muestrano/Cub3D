@@ -160,6 +160,11 @@ void	norm_angle(double *angle);
 // void	ray_iteration(t_mlx *mlx, t_ray *ray, t_map map, t_player player);
 
 /*MLX Function*/
-void init_data(t_data **data);
+/*minilibx_utils*/
+void init_data(void *mlx, void *mlx_win, t_data *img);
+void my_mlx_pixel_put(t_data *data, int x, int y, int color);
+
+/*draw_wall*/
+void draw_text(t_data *data, t_img *imgtext, int x, int y);
 
 #endif
