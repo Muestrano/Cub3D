@@ -25,7 +25,7 @@ void verify_map(t_map *map)
             char c = map->map_brute[i][j];
             if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
                 player_count++;
-                else if (c != '0' && c != '1' && c != '\0' && c != '\n')
+                else if (c != '0' && c != '1' && c != '\0' && c != '\n'&& c != ' ')
                 {
                     printf("Error\nInvalid character '%c' in map\n", c);
                     exit(1);
