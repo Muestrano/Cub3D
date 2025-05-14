@@ -80,7 +80,8 @@ void	vertical_check(t_ray *ray, t_map map, t_player player)
 	return;
 }
 
-/*  */
+/* Caculates the top and bottom pixels of a wall strip */
+/* Takes a ray structure pointer */
 void	wall_strips(t_ray *ray)
 {
 	ray->wall_strip_height = WIN_HEIGHT / ray->dist;

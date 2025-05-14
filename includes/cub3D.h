@@ -170,8 +170,9 @@ char	*ft_strcpy(char *src);
 void init_player(t_player *player, t_map *map);
 
 /* raycasting_utils */
-int		step_sign(double angle, char c);
-void	norm_angle(double *angle);
+void ray_orientation(t_ray *ray);
+int	 step_sign(double angle, char c);
+void norm_angle(double *angle);
 
 /* raycasting_iteration */
 int		is_wall(double x_inter, double y_inter, t_map map);
