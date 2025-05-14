@@ -43,7 +43,12 @@ int main(int ac, char **av)
     print_map(map);
     texture->ceiling_color = parse_color(texture->ceiling);
     texture->floor_color = parse_color(texture->floor);
+    print_texture(*texture);
+    draw_ceiling_floor(&mlx, texture);
+   
 	mlx_loop(mlx.ptr);
+
+
     close(fd);
     return (0);
 }

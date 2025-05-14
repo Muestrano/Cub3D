@@ -6,8 +6,8 @@ void print_texture(t_texture texture)
     printf("SOUTH: %s\n", texture.south);
     printf("WEST: %s\n", texture.west);
     printf("EAST: %s\n", texture.east);
-    printf("FLOOR: %s\n", texture.floor);
-    printf("CEILING: %s\n", texture.ceiling);
+    printf("FLOOR: %d\n", texture.floor_color);
+    printf("CEILING: %d\n", texture.ceiling_color);
     printf("---------------------\n");
     printf("Texture structure printed successfully.\n");
 }

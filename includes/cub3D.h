@@ -187,7 +187,9 @@ void init_mlx(t_mlx *mlx);
 void my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int parse_color(char *line);
 int create_trgb(int t, int r, int g, int b);
+void draw_ceiling_floor(t_mlx *mlx, t_texture *texture);
 /*draw_wall*/
+
 void draw_text(t_data *data, t_img *imgtext, int x, int y);
 
 /*player_movements*/

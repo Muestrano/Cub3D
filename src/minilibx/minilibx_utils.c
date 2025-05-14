@@ -43,6 +43,9 @@ void	init_mlx(t_mlx *mlx)
 	mlx->ptr = mlx_init();
 	mlx->win_ptr = mlx_new_window(mlx->ptr, WIN_WIDTH, WIN_HEIGHT, "Cub3D");
 	mlx->img.img = mlx_new_image(mlx->ptr, WIN_WIDTH, WIN_HEIGHT);
+
+	// draw_ceiling_floor(mlx, mlx->win_ptr,WIN_WIDTH,WIN_HEIGHT,ceiling_color,floor_color);
+
 	mlx->img.img = mlx_xpm_file_to_image(mlx->ptr, relative_path, &img_width, &img_height);
 	mlx->img.addr = mlx_get_data_addr(mlx->img.img, &(mlx->img.bits_per_pixel), &(mlx->img.line_length), &(mlx->img.endian));
 	mlx_put_image_to_window(mlx->ptr, mlx->win_ptr, mlx->img.img, 0, 0);
