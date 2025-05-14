@@ -10,26 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "../../includes/cub3D.h"
+#include "../../includes/cub3D.h"
 
-// //check orientation pour bonne texture wall
-
-// /*
-// typedef  struct  s_line
-// {
-// 	int  x; //the x coordinate of line relative to screen
-// 	int  y; //the current pixel index of the line (along y axis)
-// 	int  y0; //y start index of drawing texture
-// 	int  y1; //y end index of drawing texture
-// 	int  tex_x; //x coordinate of texture to draw
-// 	int  tex_y; //y coordinate of texture to draw
-// } t_line;
-// */
-
-// /*  */
-// void	render_wall(mlx, nb_ray)
+// /* Draws a wall strip with a ray */
+// /* Takes mlx, ray, map and player structures */
+// void	render_wall(t_mlx *mlx, t_ray *ray,)
 // {
 // 	return ();
 // }
-
-

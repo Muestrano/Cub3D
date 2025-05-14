@@ -114,7 +114,7 @@ void	ray_iteration(t_mlx *mlx, t_ray *ray, t_map map, t_player player)
 		ray->dist = ray->dist * cos(fish_angle);
 		wall_strips(ray);
 		(void)mlx;
-		// render_wall(mlx, nb_ray);
+		// render_wall(mlx, ray);
 		nb_ray++;
 		ray->angle += (FOV * M_PI / 180) / map.map_width;
 	}
