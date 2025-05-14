@@ -131,6 +131,3 @@ void	ray_iteration(t_mlx *mlx, t_ray *ray, t_map map, t_player player)
 	printf("x : %d\ny : %d\n", step_sign(angle, 'x'), step_sign(angle, 'y'));
 	return (0);
 }*/
-
-// A FAIIIIIIIIIIIIIIRE
-// Check dans quelle orientation le wall est hit par le ray pour appliquer la bonne texture
