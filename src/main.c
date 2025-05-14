@@ -32,16 +32,17 @@ int main(int ac, char **av)
     init_mlx(&mlx);
 
     fd = open_args(ac, av, map);
-    // read_args(fd, map);
-    // extract_texture(map->buffer, texture);
-    // verify_texture(texture);
-    // extract_map(map->buffer, map);
-    // print_map(map);
-    // verify_map(map);
-    // parse_map(map);
-    // check_border_map(map->map_brute);
-    // print_map(map);
-
+    read_args(fd, map);
+    extract_texture(map->buffer, texture);
+    verify_texture(texture);
+    extract_map(map->buffer, map);
+    print_map(map);
+    verify_map(map);
+    parse_map(map);
+    check_border_map(map->map_brute);
+    print_map(map);
+    texture->ceiling_color = parse_color(texture->ceiling);
+    texture->floor_color = parse_color(texture->floor);
 	mlx_loop(mlx.ptr);
     close(fd);
     return (0);

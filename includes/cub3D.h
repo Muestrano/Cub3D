@@ -52,6 +52,8 @@ typedef struct s_texture
 	char	*east;
 	char	*floor;
 	char	*ceiling;
+	int		floor_color;
+	int		ceiling_color;
 }	t_texture;
 
 /* Ray structure */
@@ -182,7 +184,8 @@ void	ray_iteration(t_mlx *mlx, t_ray *ray, t_map map, t_player player);
 // void init_mlx(void *mlx, void *mlx_win, t_data *img);
 void init_mlx(t_mlx *mlx);
 void my_mlx_pixel_put(t_data *data, int x, int y, int color);
-
+int parse_color(char *line);
+int create_trgb(int t, int r, int g, int b);
 /*draw_wall*/
 void draw_text(t_data *data, t_img *imgtext, int x, int y);
 
