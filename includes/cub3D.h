@@ -61,6 +61,7 @@ typedef struct s_texture
 typedef struct s_ray
 {
 	double	angle;
+	char	orientation;
 	double	dist;
 	int		wall_strip_height;
 	int		wall_top_pixel;
@@ -76,7 +77,6 @@ typedef struct s_player
 	int		p_x;
 	int		p_y;
 	double	p_angle;
-	char	orientation;
 }	t_player;
 
 
