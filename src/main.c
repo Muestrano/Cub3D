@@ -28,9 +28,7 @@ int main(int ac, char **av)
 
     init_map(&map);
     init_texture(&texture);
-	init_player(&player, map);
-    init_mlx(&mlx);
-
+    
     fd = open_args(ac, av, map);
     read_args(fd, map);
     extract_texture(map->buffer, texture);
@@ -44,8 +42,14 @@ int main(int ac, char **av)
     texture->ceiling_color = parse_color(texture->ceiling);
     texture->floor_color = parse_color(texture->floor);
     print_texture(*texture);
-    draw_ceiling_floor(&mlx, texture);
-   
+
+
+
+	init_player(&player, map);
+    init_mlx(&mlx);
+    refresh_image(&mlx);
+
+
 	mlx_loop(mlx.ptr);
 
 

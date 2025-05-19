@@ -11,12 +11,12 @@ int	ft_atoi_color(const char *str, int *i)
 	}
 	return result;
 }
-int	create_trgb(int t, int r, int g, int b)
+unsigned int	create_trgb(int t, int r, int g, int b)
 {
 	return ((t << 24) | (r << 16) | (g << 8) | b);
 }
 
-int	parse_color(char *line)
+unsigned int	parse_color(char *line)
 {
 	int i = 0;
 	int r, g, b;
@@ -56,5 +56,5 @@ int	parse_color(char *line)
 		i++;
 	}
 
-	return create_trgb(255, r, g, b);
+	return create_trgb(0, r, g, b);
 }

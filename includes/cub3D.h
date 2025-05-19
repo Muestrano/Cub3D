@@ -52,8 +52,8 @@ typedef struct s_texture
 	char	*east;
 	char	*floor;
 	char	*ceiling;
-	int		floor_color;
-	int		ceiling_color;
+	unsigned int	floor_color;
+	unsigned int	ceiling_color;
 }	t_texture;
 
 /* Ray structure */
@@ -99,6 +99,7 @@ typedef struct s_mlx
 	t_data		img;
 	t_player	player;
 	t_map		map;
+	t_texture	texture;
 
 }				t_mlx;
 
@@ -168,6 +169,7 @@ char	*ft_strcpy(char *src);
 
 /* get_init */
 void init_player(t_player *player, t_map *map);
+void init_color(t_mlx *mlx, t_texture *texture);
 
 /* raycasting_utils */
 void ray_orientation(t_ray *ray);
@@ -185,12 +187,13 @@ void	ray_iteration(t_mlx *mlx, t_ray *ray, t_map map, t_player player);
 // void init_mlx(void *mlx, void *mlx_win, t_data *img);
 void init_mlx(t_mlx *mlx);
 void my_mlx_pixel_put(t_data *data, int x, int y, int color);
-int parse_color(char *line);
-int create_trgb(int t, int r, int g, int b);
-void draw_ceiling_floor(t_mlx *mlx, t_texture *texture);
+unsigned int parse_color(char *line);
+unsigned int create_trgb(int t, int r, int g, int b);
+void *draw_ceiling_floor(t_data *img, int win_width, int win_height, unsigned int ceil_color, unsigned int floor_color);
 /*draw_wall*/
 
 void draw_text(t_data *data, t_img *imgtext, int x, int y);
+void refresh_image(t_mlx *mlx);
 
 /*player_movements*/
 void up_movements(t_player *player, t_map map);
