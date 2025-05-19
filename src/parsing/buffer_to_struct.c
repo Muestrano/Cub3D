@@ -1,6 +1,6 @@
 #include "../../includes/cub3D.h"
 
-void extract_texture(char *buffer, t_texture *texture)
+void extract_texture(char *buffer, t_mlx *mlx)
 {
     char **lines;
     int i;
@@ -13,21 +13,21 @@ void extract_texture(char *buffer, t_texture *texture)
     while (lines[i])
     {
         if (ft_strncmp(lines[i], "NO ", 3) == 0)
-            texture->north = ft_strdup(lines[i] + 3);
+            mlx->texture.north = ft_strdup(lines[i] + 3);
         else if (ft_strncmp(lines[i], "SO ", 3) == 0)
-            texture->south = ft_strdup(lines[i] + 3);
+            mlx->texture.south = ft_strdup(lines[i] + 3);
         else if (ft_strncmp(lines[i], "WE ", 3) == 0)
-            texture->west = ft_strdup(lines[i] + 3);
+            mlx->texture.west = ft_strdup(lines[i] + 3);
         else if (ft_strncmp(lines[i], "EA ", 3) == 0)
-            texture->east = ft_strdup(lines[i] + 3);
+            mlx->texture.east = ft_strdup(lines[i] + 3);
         else if (ft_strncmp(lines[i], "F ", 2) == 0)
-            texture->floor = ft_strdup(lines[i] + 2); 
+            mlx->texture.floor = ft_strdup(lines[i] + 2); 
         else if (ft_strncmp(lines[i], "C ", 2) == 0)
-            texture->ceiling = ft_strdup(lines[i] + 2);
+            mlx->texture.ceiling = ft_strdup(lines[i] + 2);
         i++;
         printf("Line %d: %s\n", i, lines[i - 1]);
         }
-    print_texture(*texture);
+    print_texture(mlx);
         // free_split(lines);
         
 }

@@ -31,18 +31,15 @@ int main(int ac, char **av)
     
     fd = open_args(ac, av, map);
     read_args(fd, map);
-    extract_texture(map->buffer, texture);
-    verify_texture(texture);
+    extract_texture(map->buffer, &mlx);
+    verify_texture(&mlx.texture);
     extract_map(map->buffer, map);
-    print_map(map);
     verify_map(map);
     parse_map(map);
     check_border_map(map->map_brute);
-    print_map(map);
-    texture->ceiling_color = parse_color(texture->ceiling);
-    texture->floor_color = parse_color(texture->floor);
-    print_texture(*texture);
-
+    mlx.texture.ceiling_color = parse_color(mlx.texture.ceiling);
+    mlx.texture.floor_color = parse_color(mlx.texture.floor);;
+    print_texture(&mlx);
 
 
 	init_player(&player, map);

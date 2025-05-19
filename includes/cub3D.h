@@ -129,7 +129,7 @@ char	**init_mapbrute(t_map *map);
 
 /*Print Function*/
 void	print_map(t_map *map);
-void	print_texture(t_texture texture);
+void	print_texture(t_mlx *mlx);
 void	print_struct(t_map map);
 void	check_border_map(char **map_brute);
 
@@ -140,7 +140,7 @@ void	check_border_map(char **map_brute);
 /*Extract functions*/
 void 	verify_texture(t_texture *texture);
 void 	verify_map(t_map *map);
-void	extract_texture(char *buffer, t_texture *texture);
+void extract_texture(char *buffer, t_mlx *mlx);
 void	extract_map(char *buffer, t_map *map);
 void	parse_map(t_map *map);
 void	check_opti_map(char **map_brute);
