@@ -35,18 +35,18 @@ int read_args(int fd, t_map *map)
     return (0);
 }
 
-void init_map(t_map **map)
+void init_map(t_map *map)
 {
-    *map = (t_map *)malloc(sizeof(t_map));
-    if (!*map)
+    map = (t_map *)malloc(sizeof(t_map));
+    if (!map)
     {
         printf("Error\nFailed to allocate memory for map\n");
         exit(1);
     }
-    (*map)->path = NULL;
-    (*map)->buffer[0] = '\0';
-    init_mapbrute(*map); // Initialize map_brute
-    (*map)->init_orientation = 0;
+    (map)->path = NULL;
+    (map)->buffer[0] = '\0';
+    init_mapbrute(map); // Initialize map_brute
+    (map)->init_orientation = 0;
 }
 
 char **init_mapbrute(t_map *map)
@@ -69,20 +69,20 @@ char **init_mapbrute(t_map *map)
 }
 
 
-void init_texture(t_texture **texture)
+void init_texture(t_texture *texture)
 {
-    *texture = (t_texture *)malloc(sizeof(t_texture));
-    if (!*texture)
+    texture = (t_texture *)malloc(sizeof(t_texture));
+    if (!texture)
     {
         write(2, "Error\nFailed to allocate memory for texture\n", 43);
         exit(1);
     }
-    (*texture)->south = NULL;
-    (*texture)->north = NULL;
-    (*texture)->west = NULL;
-    (*texture)->east = NULL;
-    (*texture)->floor =NULL;
-    (*texture)->ceiling = NULL;
+    texture->south = NULL;
+    texture->north = NULL;
+    texture->west = NULL;
+    texture->east = NULL;
+    texture->floor =NULL;
+    texture->ceiling = NULL;
 }
 
 

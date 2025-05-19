@@ -122,9 +122,9 @@ void revise_buffer(t_map *map);
 
 int		open_args(int ac, char **av, t_map *map);
 int		read_args(int fd, t_map *map);
-void	init_map(t_map **map);
+void	init_map(t_map *map);
 void	init_struct(t_map *map, t_texture *texture);
-void	init_texture(t_texture **texture);
+void	init_texture(t_texture *texture);
 char	**init_mapbrute(t_map *map);
 
 /*Print Function*/

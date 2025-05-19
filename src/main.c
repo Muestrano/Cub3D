@@ -20,29 +20,31 @@ int main(int ac, char **av)
         return (1);
     }
 
-    t_map *map;
-    t_texture *texture;
-    int fd;
     t_mlx	mlx;
-	t_player	player;
 
-    init_map(&map);
-    init_texture(&texture);
+    int fd;
     
-    fd = open_args(ac, av, map);
-    read_args(fd, map);
-    extract_texture(map->buffer, &mlx);
+
+    init_map((t_map *)&mlx.map);
+    init_texture((t_texture *)&mlx.texture);
+    
+    fd = open_args(ac, av, &mlx.map);
+    read_args(fd, &(mlx.map));
+    
+    extract_texture(mlx.map.buffer, &mlx);
     verify_texture(&mlx.texture);
-    extract_map(map->buffer, map);
-    verify_map(map);
-    parse_map(map);
-    check_border_map(map->map_brute);
+    extract_map(mlx.map.buffer, &(mlx.map));
+    verify_map(&mlx.map);
+    parse_map(&mlx.map);
+    check_border_map(mlx.map.map_brute);
     mlx.texture.ceiling_color = parse_color(mlx.texture.ceiling);
-    mlx.texture.floor_color = parse_color(mlx.texture.floor);;
+    mlx.texture.floor_color = parse_color(mlx.texture.floor);
+    printf("%u\n", parse_color(mlx.texture.ceiling));
+    printf("%u\n", parse_color(mlx.texture.floor));
     print_texture(&mlx);
 
 
-	init_player(&player, map);
+	init_player((&mlx.player), &mlx.map);
     init_mlx(&mlx);
     refresh_image(&mlx);
 
