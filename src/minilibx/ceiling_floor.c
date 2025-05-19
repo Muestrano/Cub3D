@@ -3,8 +3,6 @@
 #include "../../includes/cub3D.h"
 
 
-#include "../../includes/cub3D.h"
-
 void init_color(t_mlx *mlx, t_texture *texture)
 {
     texture->ceiling_color = parse_color(texture->ceiling);
@@ -21,18 +19,26 @@ void init_color(t_mlx *mlx, t_texture *texture)
 void *draw_ceiling_floor(t_data *img, int width, int height,
                         unsigned int ceil_color, unsigned int floor_color)
 {
-    int x, y;
+    int x = 0;
+    int y = 0;
 
-    // On suppose que img->addr est déjà initialisé ici
-    for (y = 0; y < height; y++)
+// On suppose que img->addr est déjà initialisé ici
+while (y < height)
+{
+    x = 0;
+    while (x < width)
     {
-        for (x = 0; x < width; x++)
-        {
-            unsigned int color = (y < height / 2) ? ceil_color : floor_color;
-            ((unsigned int *)(img->addr))[y * (img->line_length / 4) + x] = color;
-        }
+        unsigned int color;
+        if (y < height / 2)
+            color = ceil_color;
+        else
+            color = floor_color;
+        ((unsigned int *)(img->addr))[y * (img->line_length / 4) + x] = color;
+        x++;
     }
-    return img->img;
+    y++;
+}
+return img->img;
 }
 
 void refresh_image(t_mlx *mlx)
