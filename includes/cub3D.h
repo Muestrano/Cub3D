@@ -195,7 +195,7 @@ void norm_angle(double *angle);
 int		is_wall(double x_inter, double y_inter, t_map map);
 void	horizontal_check(t_ray *ray, t_map map, t_player player);
 void	vertical_check(t_ray *ray, t_map map, t_player player);
-void	ray_iteration(t_mlx *mlx, t_ray *ray, t_map map, t_player player);
+void	ray_iteration(t_mlx *mlx);
 
 /*MLX Function*/
 /*minilibx_utils*/
