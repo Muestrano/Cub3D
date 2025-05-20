@@ -21,8 +21,6 @@ int main(int ac, char **av)
     }
 
     t_mlx	mlx;
-    t_ray    ray;
-
     int fd;
     
 
