@@ -1,16 +1,16 @@
-WE textures/wolfenstein/eagle.xpm 
+WE textures/redbrick.xpm
 
-NO textures/wolfenstein/grey_stone.xpm
+NO textures/redbrick.xpm
 
 
 
-SO textures/wolfenstein/red_brick.xpm
+SO textures/redbrick.xpm
 
 
 F 69,222,199
 
 
-EA textures/wolfenstein/mossy.xpm
+EA textures/redbrick.xpm
 
 C 235,198,52
 

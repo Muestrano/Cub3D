@@ -21,6 +21,7 @@ int main(int ac, char **av)
     }
 
     t_mlx	mlx;
+    t_ray    ray;
 
     int fd;
     
@@ -30,6 +31,7 @@ int main(int ac, char **av)
     
     fd = open_args(ac, av, &mlx.map);
     read_args(fd, &(mlx.map));
+    close(fd);
     
     extract_texture(mlx.map.buffer, &mlx);
     verify_texture(&mlx.texture);
@@ -39,19 +41,14 @@ int main(int ac, char **av)
     check_border_map(mlx.map.map_brute);
     mlx.texture.ceiling_color = parse_color(mlx.texture.ceiling);
     mlx.texture.floor_color = parse_color(mlx.texture.floor);
-    printf("%u\n", parse_color(mlx.texture.ceiling));
-    printf("%u\n", parse_color(mlx.texture.floor));
-    print_texture(&mlx);
 
 
 	init_player((&mlx.player), &mlx.map);
     init_mlx(&mlx);
-    refresh_image(&mlx);
+    ray_iteration(&mlx, &ray, mlx.map, mlx.player);
 
 
 	mlx_loop(mlx.ptr);
 
-
-    close(fd);
     return (0);
 }

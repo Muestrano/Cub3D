@@ -56,6 +56,20 @@ typedef struct s_texture
 	unsigned int	ceiling_color;
 }	t_texture;
 
+
+typedef struct s_tex
+{
+    char    *path;          // chemin du fichier XPM
+    void    *img_pointer;   // pointeur image MLX
+    char    *buffer;        // buffer de pixels
+    int     bits_per_pixel;
+    int     line_length;
+    int     endian;
+	int 	width;
+	int 	height;
+	int     texx;          // coordonnée x dans la texture
+	int     texy;          // coordonnée y dans la texture
+}   t_tex;
 /* Ray structure */
 /* Contains the angle of a ray and the distance to the wall  */
 /* Contains the positions of the top and bot pixels of a wall strip (ray) */
@@ -100,6 +114,7 @@ typedef struct s_mlx
 	t_player	player;
 	t_map		map;
 	t_texture	texture;
+	t_tex		imgtex;
 
 }				t_mlx;
 
@@ -193,7 +208,8 @@ void *draw_ceiling_floor(t_data *img, int win_width, int win_height, unsigned in
 /*draw_wall*/
 
 void draw_text(t_data *data, t_img *imgtext, int x, int y);
-void refresh_image(t_mlx *mlx);
+void refresh_image(t_mlx *mlx, t_ray *ray);
+void draw_wall(t_mlx *mlx, t_ray *ray);
 
 /*player_movements*/
 void up_movements(t_player *player, t_map map);
