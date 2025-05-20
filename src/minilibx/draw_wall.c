@@ -21,10 +21,12 @@ void draw_wall(t_mlx *mlx, t_ray *ray, int x)
             color = mlx->texture.ceiling_color; // Replace with actual texture color
             my_mlx_pixel_put(&mlx->img, x, j, color);
         }
-//         if (j >= ray->wall_top_pixel && j <= ray->wall_bottom_pixel)
-//         {
-//             draw_text(mlx->img, ?????????, x, j); // En chantier :)
-//         }
+        if (j >= ray->wall_top_pixel && j <= ray->wall_bottom_pixel)
+        {
+            // draw_text(mlx->img, ?????????, x, j); // En chantier :)
+            color = 0;
+            my_mlx_pixel_put(&mlx->img, x, j, color);
+        }
         if (j > ray->wall_bottom_pixel)
         {
             color = mlx->texture.floor_color; // Replace with actual texture color
