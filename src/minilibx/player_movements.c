@@ -118,9 +118,9 @@ int	ft_key(int key, t_mlx *mlx)
 		right_movements(&(mlx->player), mlx->map);
 	else if (key == XK_a)
 		left_movements(&(mlx->player), mlx->map);
-	else if (key == XK_e)
+	else if (key == XK_Right)
 		right_rot_angle(&(mlx->player));
-	else if (key == XK_q)
+	else if (key == XK_Left)
 		left_rot_angle(&(mlx->player));
 	else if (key == XK_Escape)
         exit(0);
