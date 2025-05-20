@@ -43,8 +43,7 @@ int main(int ac, char **av)
 
 	init_player((&mlx.player), &mlx.map);
     init_mlx(&mlx);
-    ray_iteration(&mlx);
-
+    refresh_image(&mlx);
 
 	mlx_loop(mlx.ptr);
 

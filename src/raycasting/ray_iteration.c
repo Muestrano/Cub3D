@@ -106,7 +106,12 @@ void	ray_iteration(t_mlx *mlx)
 	nb_ray = 0;
 	ray.angle = mlx->player.p_angle - ((FOV * M_PI / 180) / 2);
 	norm_angle(&(ray.angle));
-	while (nb_ray < mlx->map.map_width)
+    printf("***********************\n");
+	printf("map width = %d\n", mlx->map.map_width);
+    printf("***********************\n");
+	mlx->map.map_width = 32;
+	mlx->map.map_height = 28;
+	while (nb_ray < WIN_WIDTH)
 	{
 		horizontal_check(&ray, mlx->map, mlx->player);
 		vertical_check(&ray, mlx->map, mlx->player);
@@ -114,7 +119,7 @@ void	ray_iteration(t_mlx *mlx)
 		norm_angle(&fish_angle);
 		ray.dist = ray.dist * cos(fish_angle);
 		wall_strips(&ray);
-		//draw_wall(mlx, &ray, nb_ray);
+		draw_wall(mlx, &ray, nb_ray);
 		nb_ray++;
 		ray.angle += (FOV * M_PI / 180) / mlx->map.map_width;
 	}
