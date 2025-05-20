@@ -45,7 +45,7 @@ int main(int ac, char **av)
 
 	init_player((&mlx.player), &mlx.map);
     init_mlx(&mlx);
-    ray_iteration(&mlx, &ray, mlx.map, mlx.player);
+    ray_iteration(&mlx);
 
 
 	mlx_loop(mlx.ptr);
