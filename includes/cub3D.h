@@ -24,8 +24,8 @@
 
 # define TILE_SIZE 30 // Size of a tile (in pixels)
 # define FOV 60 // Field of view
-# define WIN_WIDTH 1920 // WIDTH of the window
-# define WIN_HEIGHT 1080 // HEIGHT of the window
+# define WIN_WIDTH 800 // WIDTH of the window
+# define WIN_HEIGHT 600 // HEIGHT of the window
 # define playerSpeed 1
 # define rot_speed 0.5
 
