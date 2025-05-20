@@ -208,7 +208,7 @@ void *draw_ceiling_floor(t_data *img, int win_width, int win_height, unsigned in
 /*draw_wall*/
 
 void draw_text(t_data *data, t_img *imgtext, int x, int y);
-void refresh_image(t_mlx *mlx, t_ray *ray);
+void refresh_image(t_mlx *mlx);
 void draw_wall(t_mlx *mlx, t_ray *ray, int x);
 
 /*player_movements*/
