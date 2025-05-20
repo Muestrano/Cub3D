@@ -119,6 +119,8 @@ void	ray_iteration(t_mlx *mlx)
 		norm_angle(&fish_angle);
 		ray.dist = ray.dist * cos(fish_angle);
 		wall_strips(&ray);
+		ray.wall_top_pixel = floor(WIN_HEIGHT / 2);
+		ray.wall_bottom_pixel = floor(WIN_HEIGHT / 2) + 1;
 		draw_wall(mlx, &ray, nb_ray);
 		nb_ray++;
 		ray.angle += (FOV * M_PI / 180) / mlx->map.map_width;
