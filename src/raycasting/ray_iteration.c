@@ -114,10 +114,11 @@ void	ray_iteration(t_mlx *mlx)
 		norm_angle(&fish_angle);
 		ray.dist = ray.dist * cos(fish_angle);
 		wall_strips(&ray);
-		refresh_image(mlx, &ray);
+		//draw_wall(mlx, &ray, nb_ray);
 		nb_ray++;
 		ray.angle += (FOV * M_PI / 180) / mlx->map.map_width;
 	}
+	refresh_image(mlx, &ray);
 }
 
 // Test for step_sign and norm_angle

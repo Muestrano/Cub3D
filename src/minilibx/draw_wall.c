@@ -8,7 +8,7 @@
 // 	my_mlx_pixel_put(&data->img, x, y, color);
 // }
 
-// void draw_wall(t_mlx *mlx, t_ray *ray)
+// void draw_wall(t_mlx *mlx, t_ray *ray, int x)
 // {
 //     int		i;
 //     int		j;
