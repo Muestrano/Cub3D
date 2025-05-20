@@ -118,7 +118,6 @@ void	ray_iteration(t_mlx *mlx)
 		nb_ray++;
 		ray.angle += (FOV * M_PI / 180) / mlx->map.map_width;
 	}
-	refresh_image(mlx);
 }
 
 // Test for step_sign and norm_angle
