@@ -147,6 +147,7 @@ void	print_map(t_map *map);
 void	print_texture(t_mlx *mlx);
 void	print_struct(t_map map);
 void	check_border_map(char **map_brute);
+void	calc_map_size(t_map *map);
 
 // void print_player(t_player player);
 // void print_game(t_game game);

@@ -20,13 +20,32 @@ void parse_map(t_map *map)
                 map->map_brute[i][j] == 'E' || map->map_brute[i][j] == 'W')
             {
                 printf("Player found at (%d, %d)\n", i, j);
+				calc_map_size(map);
                 replace_position(map, i, j);
+				
                 break; // Sort de la boucle pour éviter de traiter plusieurs joueurs
             }
             j++;
         }
         i++;
     }
+}
+
+void	calc_map_size(t_map *map)
+{
+    int i = 0;
+    int max_width = 0;
+    int width;
+
+    while (map->map_brute && map->map_brute[i])
+    {
+        width = (int)strlen(map->map_brute[i]);
+        if (width > max_width)
+            max_width = width;
+        i++;
+    }
+    map->map_height = i;
+    map->map_width = max_width;
 }
 
 // Fonction pour remplacer la position initiale du joueur dans la carte brute
