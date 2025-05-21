@@ -30,36 +30,6 @@
 
     // mlx_put_image_to_window(mlx->ptr, mlx->win_ptr, mlx->img.img, 0, 0);
 
-// void draw_wall(t_mlx *mlx, t_ray *ray)
-// {
-//     int x = 0;
-//     while (x < WIN_WIDTH)
-//     {
-//         int y = 0;
-//         // 1. Plafond
-//         while (y < ray->wall_strip_height)
-//         {
-//             my_mlx_pixel_put(&mlx->img, x, y, mlx->texture.ceiling_color);
-//             y++;
-//         }
-//         // 2. Mur
-//         while (y <= ray->wall_bottom_pixel && y < WIN_HEIGHT)
-//         {
-//             // Ici tu peux mettre la couleur du mur ou la texture
-//             my_mlx_pixel_put(&mlx->img, x, y, 0xAAAAAA); // gris pour exemple
-//             y++;
-//         }
-//         // 3. Sol
-//         while (y < WIN_HEIGHT)
-//         {
-//             my_mlx_pixel_put(&mlx->img, x, y, mlx->texture.floor_color);
-//             y++;
-//         }
-//         x++;
-//     }
-// }
-
-
 
 void refresh_image(t_mlx *mlx)
 {
