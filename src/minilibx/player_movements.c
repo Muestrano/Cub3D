@@ -6,7 +6,7 @@
 /*   By: picarlie <picarlie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 17:36:26 by picarlie          #+#    #+#             */
-/*   Updated: 2025/05/07 17:12:00 by picarlie         ###   ########.fr       */
+/*   Updated: 2025/05/21 18:08:55 by picarlie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,16 @@ void	up_movements(t_player *player, t_map map)
 	int	x;
 	int	y;
 
-	x = floor(player->p_x + (cos(player->p_angle) * step_sign(player->p_angle, 'x') * playerSpeed));
-	y = floor(player->p_y + (sin(player->p_angle) * step_sign(player->p_angle, 'y') * playerSpeed));
+	// x = floor(player->p_x + (cos(player->p_angle) * step_sign(player->p_angle, 'x') * playerSpeed));
+	// y = floor(player->p_y + (sin(player->p_angle) * step_sign(player->p_angle, 'y') * playerSpeed));
+	
+	x = floor(player->p_x + (cos(player->p_angle) * playerSpeed));
+	y = floor(player->p_y + (sin(player->p_angle) * playerSpeed));
+	
+	// printf("px = %d\n", player->p_x);
+	// printf("py = %d\n", player->p_y);
+	// printf("x = %d\n", x);
+	// printf("y = %d\n", y);
 	if (!is_wall(x, y, map))
 	{
 		player->p_x = x;
@@ -43,8 +51,16 @@ void	down_movements(t_player *player, t_map map)
 	int	x;
 	int	y;
 
-	x = floor(player->p_x - (cos(player->p_angle) * step_sign(player->p_angle, 'x') * playerSpeed));
-	y = floor(player->p_y - (sin(player->p_angle) * step_sign(player->p_angle, 'y') * playerSpeed));
+	// x = floor(player->p_x - (cos(player->p_angle) * step_sign(player->p_angle, 'x') * playerSpeed));
+	// y = floor(player->p_y - (sin(player->p_angle) * step_sign(player->p_angle, 'y') * playerSpeed));
+
+	x = floor(player->p_x - (cos(player->p_angle) * playerSpeed));
+	y = floor(player->p_y - (sin(player->p_angle) * playerSpeed));
+
+	// printf("px = %d\n", player->p_x);
+	// printf("py = %d\n", player->p_y);
+	// printf("x = %d\n", x);
+	// printf("y = %d\n", y);
 	if (!is_wall(x, y, map))
 	{
 		player->p_x = x;
@@ -67,8 +83,16 @@ void	right_movements(t_player *player, t_map map)
 	int	x;
 	int	y;
 
-	x = floor(player->p_x + (cos(player->p_angle + (M_PI / 2)) * step_sign(player->p_angle, 'x') * playerSpeed));
-	y = floor(player->p_y + (sin(player->p_angle + (M_PI / 2)) * step_sign(player->p_angle, 'y') * playerSpeed));
+	// x = floor(player->p_x + (cos(player->p_angle + (M_PI / 2)) * step_sign(player->p_angle, 'x') * playerSpeed));
+	// y = floor(player->p_y + (sin(player->p_angle + (M_PI / 2)) * step_sign(player->p_angle, 'y') * playerSpeed));
+	
+	x = floor(player->p_x + (cos(player->p_angle + (M_PI / 2)) * playerSpeed));
+	y = floor(player->p_y + (sin(player->p_angle + (M_PI / 2)) * playerSpeed));
+	
+	// printf("px = %d\n", player->p_x);
+	// printf("py = %d\n", player->p_y);
+	// printf("x = %d\n", x);
+	// printf("y = %d\n", y);
 	if (!is_wall(x, y, map))
 	{
 		player->p_x = x;
@@ -91,8 +115,16 @@ void	left_movements(t_player *player, t_map map)
 	int	x;
 	int	y;
 
-	x = floor(player->p_x + (cos(player->p_angle - (M_PI / 2)) * step_sign(player->p_angle, 'x') * playerSpeed));
-	y = floor(player->p_y + (sin(player->p_angle - (M_PI / 2)) * step_sign(player->p_angle, 'y') * playerSpeed));
+	// x = floor(player->p_x + (cos(player->p_angle - (M_PI / 2)) * step_sign(player->p_angle, 'x') * playerSpeed));
+	// y = floor(player->p_y + (sin(player->p_angle - (M_PI / 2)) * step_sign(player->p_angle, 'y') * playerSpeed));
+	
+	x = floor(player->p_x + (cos(player->p_angle - (M_PI / 2)) * playerSpeed));
+	y = floor(player->p_y + (sin(player->p_angle - (M_PI / 2)) * playerSpeed));
+	
+	// printf("px = %d\n", player->p_x);
+	// printf("py = %d\n", player->p_y);
+	// printf("x = %d\n", x);
+	// printf("y = %d\n", y);
 	if (!is_wall(x, y, map))
 	{
 		player->p_x = x;
@@ -111,7 +143,9 @@ void	left_movements(t_player *player, t_map map)
 int	ft_key(int key, t_mlx *mlx)
 {
 	if (key == XK_w)
+	{
 		up_movements(&(mlx->player), mlx->map);
+	}
 	else if (key == XK_s)
 		down_movements(&(mlx->player), mlx->map);
 	else if (key == XK_d)
@@ -125,6 +159,7 @@ int	ft_key(int key, t_mlx *mlx)
 	else if (key == XK_Escape)
         exit(0);
 		// ft_exit(data, "Merci d'avoir joué au jeu!", EXIT_SUCCESS);
+    refresh_image(mlx);
 	return (1);
 }
 

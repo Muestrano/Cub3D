@@ -6,7 +6,7 @@
 /*   By: picarlie <picarlie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 13:56:28 by picarlie          #+#    #+#             */
-/*   Updated: 2025/05/21 16:48:32 by picarlie         ###   ########.fr       */
+/*   Updated: 2025/05/21 17:57:10 by picarlie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ int	is_wall(double x_inter, double y_inter, t_map map)
 
 	x = floor(x_inter / TILE_SIZE);
 	y = floor(y_inter / TILE_SIZE);
-	// x = x_inter;
-	// y = y_inter;
 	if (x < 0)
 		x = 0;
 	if (y < 0)
@@ -33,6 +31,8 @@ int	is_wall(double x_inter, double y_inter, t_map map)
 	// printf("y = %d\n", y);
 	// printf("x inter = %f\n", x_inter);
 	// printf("y inter = %f\n", y_inter);
+	// printf("map.map_brute[x][y] - 48 = %d\n", map.map_brute[x][y] - 48);
+	// printf("***********************\n\n");
 	if (x >= map.map_width || y >= map.map_height)
 		return (1);
 	return (map.map_brute[x][y] - 48);
@@ -65,6 +65,7 @@ void	horizontal_check(t_ray *ray, t_map map, t_player player)
 		a_y += y_step;
 	}
 	ray->dist = sqrt(pow(player.p_x - a_x, 2) + pow(player.p_y - a_y, 2)); //Checker si la valeur est bien sauvegardee grace au ptr
+	// printf("ray dist = %f\n", ray->dist);
 	return ;
 }
 

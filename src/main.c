@@ -6,7 +6,7 @@
 /*   By: picarlie <picarlie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 15:45:14 by picarlie          #+#    #+#             */
-/*   Updated: 2025/05/12 17:57:48 by picarlie         ###   ########.fr       */
+/*   Updated: 2025/05/21 16:51:00 by picarlie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int main(int ac, char **av)
 	init_player((&mlx.player), &mlx.map);
     init_mlx(&mlx);
     treat_text(mlx.ptr, &mlx.imgtext, mlx.texture.north);
-    print_imgtext(mlx.imgtext);
+    // print_imgtext(mlx.imgtext);
     refresh_image(&mlx);
 
 
