@@ -6,7 +6,7 @@
 /*   By: picarlie <picarlie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:54:44 by picarlie          #+#    #+#             */
-/*   Updated: 2025/05/12 16:58:54 by picarlie         ###   ########.fr       */
+/*   Updated: 2025/05/21 16:07:45 by picarlie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ typedef struct s_ray
 /* Player raycasting structure */
 /* Contains the player position (x,y) in pixels (useful ??????????)*/
 /* The player angle in radians */
-/* The field of view in radians */
 typedef struct s_player
 {
 	int		p_x;

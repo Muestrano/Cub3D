@@ -6,7 +6,7 @@
 /*   By: picarlie <picarlie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 13:56:28 by picarlie          #+#    #+#             */
-/*   Updated: 2025/05/21 15:05:11 by picarlie         ###   ########.fr       */
+/*   Updated: 2025/05/21 16:38:26 by picarlie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,17 @@ int	is_wall(double x_inter, double y_inter, t_map map)
 
 	x = floor(x_inter / TILE_SIZE);
 	y = floor(y_inter / TILE_SIZE);
+	// x = x_inter;
+	// y = y_inter;
 	if (x < 0)
 		x = 0;
 	if (y < 0)
 		y = 0;
+	// printf("***********************\n");
+	// printf("x = %d\n", x);
+	// printf("y = %d\n", y);
+	// printf("x inter = %f\n", x_inter);
+	// printf("y inter = %f\n", y_inter);
 	if (x >= map.map_width || y >= map.map_height)
 		return (1);
 	return (map.map_brute[x][y] - 48);
@@ -42,9 +49,16 @@ void	horizontal_check(t_ray *ray, t_map map, t_player player)
 	int	y_step;
 
 	a_y = floor(player.p_y / TILE_SIZE) * TILE_SIZE;
+	// norm_angle(&(ray->angle));
 	a_x = player.p_x + ((a_y - player.p_y) / tan(ray->angle));
 	y_step = TILE_SIZE * step_sign(ray->angle, 'y');
 	x_step = (y_step / tan(ray->angle) * step_sign(ray->angle, 'x'));
+	// printf("***********************\n");
+	// printf("ax = %d\n", a_x);
+	// printf("ay = %d\n", a_y);
+	// printf("px = %d\n", player.p_x);
+	// printf("py = %d\n", player.p_y);
+	// printf("tan ray angle = %f\n", tan(ray->angle));
 	while (!is_wall(a_x, a_y, map))
 	{
 		a_x += x_step;
@@ -66,6 +80,7 @@ void	vertical_check(t_ray *ray, t_map map, t_player player)
 	double	new_dist;
 
 	a_x = floor(player.p_y / TILE_SIZE) * TILE_SIZE;
+	// norm_angle(&(ray->angle));
 	a_y = player.p_y + ((a_x - player.p_x) / tan(ray->angle));
 	x_step = TILE_SIZE * step_sign(ray->angle, 'x');
 	y_step = (x_step / tan(ray->angle) * step_sign(ray->angle, 'y'));
@@ -104,28 +119,46 @@ void	ray_iteration(t_mlx *mlx)
 	t_ray	ray;
 
 	nb_ray = 0;
-	ray.angle = mlx->player.p_angle - ((FOV * M_PI / 180) / 2);
-	norm_angle(&(ray.angle));
     // printf("***********************\n");
-	// printf("map width = %d\n", mlx->map.map_width);
-	// printf("map height = %d\n", mlx->map.map_height);
+	// printf("nb ray = %d\n", nb_ray);
+	// printf("wall height = %d\n", mlx->map.map_height);
+	// printf("wall width = %d\n", mlx->map.map_width);
 	// printf("nb ray = %d\n", nb_ray);
     // printf("***********************\n");
-	mlx->map.map_width = 32;
-	mlx->map.map_height = 28;
+	ray.angle = mlx->player.p_angle - (FOV * M_PI / 360);
+    // printf("***********************\n");
+	// printf("ray angle = %f\n", ray.angle);
+	// printf("player angle = %f\n", mlx->player.p_angle);
+	// printf("FOV = %d\n", FOV);
+	norm_angle(&(ray.angle));
+	// printf("ray angle = %f\n", ray.angle);
 	while (nb_ray < WIN_WIDTH)
 	{
 		horizontal_check(&ray, mlx->map, mlx->player);
 		vertical_check(&ray, mlx->map, mlx->player);
 		fish_angle = ray.angle - mlx->player.p_angle;
 		norm_angle(&fish_angle);
+    // printf("***********************\n");
+	// printf("ray angle = %f\n", ray.angle);
+	// printf("fish angle = %f\n", fish_angle);
 		ray.dist = ray.dist * cos(fish_angle);
+		// if (ray.dist < 0) // ???????????
+		// 	ray.dist *= -1;
 		wall_strips(&ray);
-		ray.wall_top_pixel = floor(WIN_HEIGHT / 2);
-		ray.wall_bottom_pixel = floor(WIN_HEIGHT / 2) + 1;
+    // printf("***********************\n");
+	// printf("strip height = %d\n", ray.wall_strip_height);
+	// printf("ray dist = %f\n", ray.dist);
+	// printf("top pixel = %d\n", ray.wall_top_pixel);
+	// printf("bot pixel = %d\n", ray.wall_bottom_pixel);
+    // printf("***********************\n");
+		// ray.wall_top_pixel = floor(WIN_HEIGHT / 2);
+		// ray.wall_bottom_pixel = floor(WIN_HEIGHT / 2) + 1;
+		ray_orientation(&ray);
 		draw_wall(mlx, &ray, nb_ray);
 		nb_ray++;
-		ray.angle += (FOV * M_PI / 180) / mlx->map.map_width;
+		// ray.angle += (FOV * M_PI / 180) / mlx->map.map_width;
+		ray.angle += M_PI / (360 * mlx->map.map_width);
+		norm_angle(&(ray.angle));
 	}
 }
 
