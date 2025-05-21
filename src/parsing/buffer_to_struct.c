@@ -25,7 +25,7 @@ void extract_texture(char *buffer, t_mlx *mlx)
         else if (ft_strncmp(lines[i], "C ", 2) == 0)
             mlx->texture.ceiling = ft_strdup(lines[i] + 2);
         i++;
-        printf("Line %d: %s\n", i, lines[i - 1]);
+        // printf("Line %d: %s\n", i, lines[i - 1]);
         }
         // free_split(lines);
         

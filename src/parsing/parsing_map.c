@@ -7,7 +7,7 @@ void parse_map(t_map *map)
 
     while (map->map_brute[i]) // Parcourt chaque ligne de la carte brute
     {
-        printf("Processing line %d: %s\n", i, map->map_brute[i]); // Debug: Affiche la ligne actuelle
+        // printf("Processing line %d: %s\n", i, map->map_brute[i]); // Debug: Affiche la ligne actuelle
         j = 0;
         while (map->map_brute[i][j]) // Parcourt chaque caractère de la ligne
         {
@@ -19,7 +19,7 @@ void parse_map(t_map *map)
             if (map->map_brute[i][j] == 'N' || map->map_brute[i][j] == 'S' || 
                 map->map_brute[i][j] == 'E' || map->map_brute[i][j] == 'W')
             {
-                printf("Player found at (%d, %d)\n", i, j);
+                // printf("Player found at (%d, %d)\n", i, j);
 				calc_map_size(map);
                 replace_position(map, i, j);
 				
@@ -61,8 +61,8 @@ void replace_position(t_map *map, int i, int j)
         map->x_init = i;
         map->y_init = j;
     }
-    printf("Initial orientation: %c\n", map->init_orientation);
-    printf("Initial position:(x, y) (%d, %d)\n", map->x_init, map->y_init);
+    // printf("Initial orientation: %c\n", map->init_orientation);
+    // printf("Initial position:(x, y) (%d, %d)\n", map->x_init, map->y_init);
 }
 
 int	is_player(char c)
