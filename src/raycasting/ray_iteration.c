@@ -6,7 +6,7 @@
 /*   By: picarlie <picarlie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 13:56:28 by picarlie          #+#    #+#             */
-/*   Updated: 2025/05/06 13:50:19 by picarlie         ###   ########.fr       */
+/*   Updated: 2025/05/21 14:59:03 by picarlie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,9 +106,9 @@ void	ray_iteration(t_mlx *mlx)
 	nb_ray = 0;
 	ray.angle = mlx->player.p_angle - ((FOV * M_PI / 180) / 2);
 	norm_angle(&(ray.angle));
-    printf("***********************\n");
-	printf("map width = %d\n", mlx->map.map_width);
-    printf("***********************\n");
+    // printf("***********************\n");
+	// printf("map width = %d\n", mlx->map.map_width);
+    // printf("***********************\n");
 	mlx->map.map_width = 32;
 	mlx->map.map_height = 28;
 	while (nb_ray < WIN_WIDTH)

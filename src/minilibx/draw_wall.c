@@ -33,7 +33,5 @@ void draw_wall(t_mlx *mlx, t_ray *ray, int x)
             my_mlx_pixel_put(&mlx->img, x, j, color);
         }
         j++;
-
-    printf("***********************\n\n\n\n");
     }
 }
