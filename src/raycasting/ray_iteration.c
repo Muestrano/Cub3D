@@ -6,7 +6,7 @@
 /*   By: picarlie <picarlie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 13:56:28 by picarlie          #+#    #+#             */
-/*   Updated: 2025/05/21 16:38:26 by picarlie         ###   ########.fr       */
+/*   Updated: 2025/05/21 16:48:32 by picarlie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,38 +126,19 @@ void	ray_iteration(t_mlx *mlx)
 	// printf("nb ray = %d\n", nb_ray);
     // printf("***********************\n");
 	ray.angle = mlx->player.p_angle - (FOV * M_PI / 360);
-    // printf("***********************\n");
-	// printf("ray angle = %f\n", ray.angle);
-	// printf("player angle = %f\n", mlx->player.p_angle);
-	// printf("FOV = %d\n", FOV);
 	norm_angle(&(ray.angle));
-	// printf("ray angle = %f\n", ray.angle);
 	while (nb_ray < WIN_WIDTH)
 	{
 		horizontal_check(&ray, mlx->map, mlx->player);
 		vertical_check(&ray, mlx->map, mlx->player);
 		fish_angle = ray.angle - mlx->player.p_angle;
 		norm_angle(&fish_angle);
-    // printf("***********************\n");
-	// printf("ray angle = %f\n", ray.angle);
-	// printf("fish angle = %f\n", fish_angle);
 		ray.dist = ray.dist * cos(fish_angle);
-		// if (ray.dist < 0) // ???????????
-		// 	ray.dist *= -1;
 		wall_strips(&ray);
-    // printf("***********************\n");
-	// printf("strip height = %d\n", ray.wall_strip_height);
-	// printf("ray dist = %f\n", ray.dist);
-	// printf("top pixel = %d\n", ray.wall_top_pixel);
-	// printf("bot pixel = %d\n", ray.wall_bottom_pixel);
-    // printf("***********************\n");
-		// ray.wall_top_pixel = floor(WIN_HEIGHT / 2);
-		// ray.wall_bottom_pixel = floor(WIN_HEIGHT / 2) + 1;
 		ray_orientation(&ray);
 		draw_wall(mlx, &ray, nb_ray);
 		nb_ray++;
-		// ray.angle += (FOV * M_PI / 180) / mlx->map.map_width;
-		ray.angle += M_PI / (360 * mlx->map.map_width);
+		ray.angle += M_PI / (180 * WIN_WIDTH);
 		norm_angle(&(ray.angle));
 	}
 }
