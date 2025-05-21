@@ -6,7 +6,7 @@
 /*   By: picarlie <picarlie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 13:56:28 by picarlie          #+#    #+#             */
-/*   Updated: 2025/05/21 14:59:03 by picarlie         ###   ########.fr       */
+/*   Updated: 2025/05/21 15:05:11 by picarlie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,8 @@ void	ray_iteration(t_mlx *mlx)
 	norm_angle(&(ray.angle));
     // printf("***********************\n");
 	// printf("map width = %d\n", mlx->map.map_width);
+	// printf("map height = %d\n", mlx->map.map_height);
+	// printf("nb ray = %d\n", nb_ray);
     // printf("***********************\n");
 	mlx->map.map_width = 32;
 	mlx->map.map_height = 28;
