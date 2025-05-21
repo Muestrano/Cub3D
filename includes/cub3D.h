@@ -113,7 +113,7 @@ typedef struct s_mlx
 	t_player	player;
 	t_map		map;
 	t_texture	texture;
-	t_tex		imgtex;
+	t_tex		imgtext;
 
 }				t_mlx;
 
@@ -147,7 +147,8 @@ void	print_texture(t_mlx *mlx);
 void	print_struct(t_map map);
 void	check_border_map(char **map_brute);
 void	calc_map_size(t_map *map);
-
+void	print_imgtext(t_tex imgtext)
+;
 // void print_player(t_player player);
 // void print_game(t_game game);
 // void print_ray(t_ray ray);
@@ -161,6 +162,8 @@ void	parse_map(t_map *map);
 void	check_opti_map(char **map_brute);
 void	replace_position(t_map *map, int i, int j);
 int 	invalid_wall(char **map_brute);
+void	draw_oriented_text(t_data *img, t_tex *imgtext, int x, int y);
+
 
 
 /*	Free function*/	
@@ -185,6 +188,8 @@ char	*ft_strcpy(char *src);
 /* get_init */
 void init_player(t_player *player, t_map *map);
 void init_color(t_mlx *mlx, t_texture *texture);
+void treat_text(void *mlx_ptr, t_tex *tex, char* path);
+
 
 /* raycasting_utils */
 void ray_orientation(t_ray *ray);
@@ -206,7 +211,7 @@ unsigned int parse_color(char *line);
 unsigned int create_trgb(int t, int r, int g, int b);
 void *draw_ceiling_floor(t_data *img, int win_width, int win_height, unsigned int ceil_color, unsigned int floor_color);
 /*draw_wall*/
-
+void treatment_texture(t_mlx *mlx);
 void draw_text(t_data *data, t_img *imgtext, int x, int y);
 void refresh_image(t_mlx *mlx);
 void draw_wall(t_mlx *mlx, t_ray *ray, int x);
@@ -219,6 +224,7 @@ void left_movements(t_player *player, t_map map);
 int  ft_key(int key, t_mlx *mlx);
 
 /*player_rotation*/
+
 void right_rot_angle(t_player *player);
 void left_rot_angle(t_player *player);
 

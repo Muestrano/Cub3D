@@ -43,7 +43,10 @@ int main(int ac, char **av)
 
 	init_player((&mlx.player), &mlx.map);
     init_mlx(&mlx);
+    treat_text(mlx.ptr, &mlx.imgtext, mlx.texture.north);
+    print_imgtext(mlx.imgtext);
     refresh_image(&mlx);
+
 
 	mlx_loop(mlx.ptr);
 
