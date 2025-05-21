@@ -6,7 +6,7 @@
 /*   By: picarlie <picarlie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:54:44 by picarlie          #+#    #+#             */
-/*   Updated: 2025/05/21 16:07:45 by picarlie         ###   ########.fr       */
+/*   Updated: 2025/05/21 16:42:34 by picarlie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,8 +147,8 @@ void	print_texture(t_mlx *mlx);
 void	print_struct(t_map map);
 void	check_border_map(char **map_brute);
 void	calc_map_size(t_map *map);
-void	print_imgtext(t_tex imgtext)
-;
+void	print_imgtext(t_tex imgtext);
+
 // void print_player(t_player player);
 // void print_game(t_game game);
 // void print_ray(t_ray ray);
