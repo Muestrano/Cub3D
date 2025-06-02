@@ -23,7 +23,7 @@ void draw_wall(t_mlx *mlx, t_ray *ray, int x)
         }
         if (j >= ray->wall_top_pixel && j <= ray->wall_bottom_pixel)
         {
-            // draw_text(mlx->img, ?????????, x, j); // En chantier :)
+            draw_texture(mlx, ray, &mlx->imgtext, x); // En chantier :)
             color = 0;
             my_mlx_pixel_put(&mlx->img, x, j, color);
         }
@@ -36,16 +36,24 @@ void draw_wall(t_mlx *mlx, t_ray *ray, int x)
     }
 }
 
-// void	draw_oriented_text(t_data *img, t_tex *tex, int x , int y)
-// {
-//     if (!tex || !tex->buffer)
-//         return;
-//     if (tex->texx < 0 || tex->texx >= tex->width || tex->texy < 0 || tex->texy >= tex->height)
-//         return;
-//     char *pixel = tex->buffer + (tex->texy * tex->line_length + tex->texx * (tex->bits_per_pixel / 8));
-//     int color = *(unsigned int *)pixel;
-//     my_mlx_pixel_put(img, x, y, color);
-// }
+
+void draw_texture(t_mlx *mlx, t_ray *ray, t_tex *tex, int x)
+{
+    int y = ray->wall_top_pixel;
+    int color;
+    double step = (double)tex->height / (ray->wall_bottom_pixel - ray->wall_top_pixel + 1);
+    double tex_pos = (ray->wall_top_pixel - WIN_HEIGHT / 2 + ray->wall_strip_height / 2) * step;
+
+    while (y <= ray->wall_bottom_pixel)
+    {
+        int tex_y = (int)tex_pos & (tex->height - 1);
+        char *pixel = tex->buffer + (tex_y * tex->line_length + tex->texx * (tex->bits_per_pixel / 8));
+        color = *(unsigned int *)pixel;
+        my_mlx_pixel_put(&mlx->img, x, y, color);
+        tex_pos += step;
+        y++;
+    }
+}
 
 void print_texture_treated(t_tex *tex)
 {

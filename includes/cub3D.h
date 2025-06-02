@@ -215,6 +215,8 @@ void treatment_texture(t_mlx *mlx);
 void draw_text(t_data *data, t_img *imgtext, int x, int y);
 void refresh_image(t_mlx *mlx);
 void draw_wall(t_mlx *mlx, t_ray *ray, int x);
+void draw_texture(t_mlx *mlx, t_ray *ray, t_tex *tex, int x);
+
 
 /*player_movements*/
 void up_movements(t_player *player, t_map map);
