@@ -17,13 +17,13 @@
 void	ray_orientation(t_ray *ray)
 {
 	if (ray->angle >= (M_PI / 4) && ray->angle <= (M_PI * (3 / 4)))
-		ray->orientation = 'S';
-	else if (ray->angle >= (M_PI * (3 / 4)) && ray->angle <= (M_PI * (5 / 4)))
-		ray->orientation = 'W';
-	else if (ray->angle >= (M_PI * (5 / 4)) && ray->angle <= (M_PI * (7 / 4)))
 		ray->orientation = 'N';
-	else /*if (ray->angle >= (M_PI * (7 / 4)) || ray->angle <= (M_PI / 4))*/
+	else if (ray->angle >= (M_PI * (3 / 4)) && ray->angle <= (M_PI * (5 / 4)))
 		ray->orientation = 'E';
+	else if (ray->angle >= (M_PI * (5 / 4)) && ray->angle <= (M_PI * (7 / 4)))
+		ray->orientation = 'S';
+	else /*if (ray->angle >= (M_PI * (7 / 4)) || ray->angle <= (M_PI / 4))*/
+		ray->orientation = 'W';
 }
 
 /* Tells the sign of the steps based on the ray's angle */

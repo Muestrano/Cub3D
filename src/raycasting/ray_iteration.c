@@ -141,6 +141,17 @@ void	ray_iteration(t_mlx *mlx)
 		nb_ray++;
 		ray.angle += M_PI / (180 * WIN_WIDTH);
 		norm_angle(&(ray.angle));
+		printf("***********************\n");
+		printf("nb ray = %d\n", nb_ray);
+		printf("wall height = %d\n", ray.wall_strip_height);
+		printf("wall top = %d\n", ray.wall_top_pixel);
+		printf("wall bot = %d\n", ray.wall_bottom_pixel);
+		printf("orientation = %c\n", ray.orientation);
+		printf("angle = %f\n", ray.angle);
+		printf("dist = %f\n", ray.dist);
+		// printf("wall width = %d\n", mlx->map.map_width);
+		// printf("nb ray = %d\n", nb_ray);
+  		printf("***********************\n");
 	}
 }
 
