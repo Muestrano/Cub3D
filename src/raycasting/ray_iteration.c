@@ -120,24 +120,17 @@ void	ray_iteration(t_mlx *mlx)
 	t_ray	ray;
 
 	nb_ray = 0;
-    printf("***********************\n");
-	printf("player angle = %f\n", mlx->player.p_angle);
-	printf("player orientation = %c\n", mlx->map.init_orientation);
+    // printf("***********************\n");
+	// printf("player angle = %f\n", mlx->player.p_angle);
+	// printf("player orientation = %c\n", mlx->map.init_orientation);
 	// printf("wall height = %d\n", mlx->map.map_height);
 	// printf("wall width = %d\n", mlx->map.map_width);
 	// printf("nb ray = %d\n", nb_ray);
-    printf("***********************\n");
+    // printf("***********************\n");
+	printf("x = %d\n", mlx->map.x_init);
+	printf("y = %d\n", mlx->map.y_init);
 	ray.angle = mlx->player.p_angle - (FOV * M_PI / 360);
 	norm_angle(&(ray.angle));
-	// double x;
-	// x = M_PI;
-	// x = x - (FOV * M_PI / 360);
-	// printf("x = %f\n", x);
-	// double y;
-	// y = M_PI / (180 * WIN_WIDTH);
-	// printf("y = %f\n", y);
-	// y = y * WIN_WIDTH;
-	// printf("y = %f\n", y);
 	while (nb_ray < WIN_WIDTH)
 	{
 		horizontal_check(&ray, mlx->map, mlx->player);
@@ -157,12 +150,12 @@ void	ray_iteration(t_mlx *mlx)
 		// printf("wall top = %d\n", ray.wall_top_pixel);
 		// printf("wall bot = %d\n", ray.wall_bottom_pixel);
 		// printf("orientation = %c\n", ray.orientation);
+		// printf("player angle = %f\n", mlx->player.p_angle);
 		// printf("angle = %f\n", ray.angle);
+		// printf("fish = %f\n", fish_angle);
 		// printf("dist = %f\n", ray.dist);
 		// printf("wall width = %d\n", mlx->map.map_width);
 		// printf("nb ray = %d\n", nb_ray);
-		// x += M_PI / (180 * WIN_WIDTH);
-		// printf("x = %f\n", x);
   		// printf("***********************\n");
 	}
 }
