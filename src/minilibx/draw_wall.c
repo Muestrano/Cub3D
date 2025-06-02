@@ -34,6 +34,35 @@ void draw_wall(t_mlx *mlx, t_ray *ray, int x)
     }
 }
 
+void calculate_texx(t_mlx *mlx, t_ray *ray, t_tex *tex)
+{
+    double wall_x;
+    
+    // Calcule la position précise de l’impact sur le mur (fraction de case)
+    if (ray->orientation == 'N' || ray->orientation == 'S')
+        wall_x = mlx->player.p_x / TILE_SIZE + ray->dist * cos(ray->angle);
+    else
+        wall_x = mlx->player.p_y / TILE_SIZE + ray->dist * sin(ray->angle);
+
+    wall_x -= floor(wall_x); // on garde la partie fractionnaire
+
+    // Convertit en coordonnée X de texture
+    tex->texx = (int)(wall_x * (double)(tex->width));
+    
+    // Inversion si nécessaire pour éviter l’effet miroir
+    if ((ray->orientation == 'E' && ray->angle > M_PI) || 
+        (ray->orientation == 'S' && ray->angle < M_PI / 2) || 
+        (ray->orientation == 'N' && ray->angle > 3 * M_PI / 2))
+    {
+        tex->texx = tex->width - tex->texx - 1;
+    }
+
+    // Clamp pour éviter les débordements
+    if (tex->texx < 0)
+        tex->texx = 0;
+    if (tex->texx >= tex->width)
+        tex->texx = tex->width - 1;
+}
 
 void draw_texture(t_mlx *mlx, t_ray *ray, t_tex *tex, int x)
 {
@@ -45,55 +74,24 @@ void draw_texture(t_mlx *mlx, t_ray *ray, t_tex *tex, int x)
         return;
 
     // Calcul du ratio de progression dans la texture
-    step = (double)tex->height / (ray->wall_bottom_pixel - ray->wall_top_pixel + 1);
+    step = (double)tex->height / ray->wall_strip_height;
     // Position de départ dans la texture (axe Y)
     tex_pos = (ray->wall_top_pixel - WIN_HEIGHT / 2 + ray->wall_strip_height / 2) * step;
 
     for (y = ray->wall_top_pixel; y <= ray->wall_bottom_pixel; y++)
     {
-        int tex_y = (int)tex_pos;
+        tex->texy = (int)tex_pos;
         // Clamp tex_y pour éviter les débordements
-        if (tex_y < 0)
-            tex_y = 0;
-        if (tex_y >= tex->height)
-            tex_y = tex->height - 1;
+        if (tex->texy < 0)
+            tex->texy = 0;
+        if (tex->texy >= tex->height)
+            tex->texy = tex->height - 1;
 
         // Calcul de la position du pixel dans le buffer de la texture
-        char *pixel = tex->buffer + (tex_y * tex->line_length + tex->texx * (tex->bits_per_pixel / 8));
+        char *pixel = tex->buffer + (tex->texy * tex->line_length + tex->texx * (tex->bits_per_pixel / 8));
         int color = *(unsigned int *)pixel;
 
         my_mlx_pixel_put(&mlx->img, x, y, color);
         tex_pos += step;
     }
 }
-
-void print_texture_treated(t_tex *tex)
-{
-    if (!tex || !tex->buffer)
-        return;
-    printf("Texture path: %s\n", tex->path);
-    printf("Width: %d, Height: %d\n", tex->width, tex->height);
-    printf("Bits per pixel: %d, Line length: %d, Endian: %d\n", tex->bits_per_pixel, tex->line_length, tex->endian);
-}
-
-void	draw_oriented_text(t_data *img, t_tex *imgtext, int x, int y)
-{
-    if (!imgtext || !imgtext->buffer)
-        return;
-    if (imgtext->texx < 0 || imgtext->texx >= imgtext->width || imgtext->texy < 0 || imgtext->texy >= imgtext->height)
-        return;
-    char *pixel = imgtext->buffer + (imgtext->texy * imgtext->line_length + imgtext->texx * (imgtext->bits_per_pixel / 8));
-    int color = *(unsigned int *)pixel;
-    my_mlx_pixel_put(img, x, y, color);
-}
-// void free_texture(t_tex *tex)
-// {
-//     if (tex)
-//     {
-//         if (tex->img_pointer)
-//             mlx_destroy_image(tex->img_pointer);
-//         if (tex->buffer)
-//             free(tex->buffer);
-//         free(tex);
-//     }
-// }

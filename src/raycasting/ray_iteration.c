@@ -140,6 +140,8 @@ void	ray_iteration(t_mlx *mlx)
 		ray.dist = ray.dist * cos(fish_angle);
 		wall_strips(&ray);
 		ray_orientation(&ray);
+		calculate_texx(mlx, &ray, &(mlx->imgtext));
+
 		draw_wall(mlx, &ray, nb_ray);
 		nb_ray++;
 		ray.angle += FOV * M_PI / (180 * WIN_WIDTH);

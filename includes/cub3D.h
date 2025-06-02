@@ -148,6 +148,8 @@ void	print_struct(t_map map);
 void	check_border_map(char **map_brute);
 void	calc_map_size(t_map *map);
 void	print_imgtext(t_tex imgtext);
+void calculate_texx(t_mlx *mlx, t_ray *ray, t_tex *tex);
+
 
 // void print_player(t_player player);
 // void print_game(t_game game);
