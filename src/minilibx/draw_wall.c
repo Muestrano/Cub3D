@@ -37,19 +37,33 @@ void draw_wall(t_mlx *mlx, t_ray *ray, int x)
 
 void draw_texture(t_mlx *mlx, t_ray *ray, t_tex *tex, int x)
 {
-    int y = ray->wall_top_pixel;
-    int color;
-    double step = (double)tex->height / (ray->wall_bottom_pixel - ray->wall_top_pixel + 1);
-    double tex_pos = (ray->wall_top_pixel - WIN_HEIGHT / 2 + ray->wall_strip_height / 2) * step;
+    int y;
+    double step;
+    double tex_pos;
 
-    while (y <= ray->wall_bottom_pixel)
+    if (!tex || !tex->buffer)
+        return;
+
+    // Calcul du ratio de progression dans la texture
+    step = (double)tex->height / (ray->wall_bottom_pixel - ray->wall_top_pixel + 1);
+    // Position de départ dans la texture (axe Y)
+    tex_pos = (ray->wall_top_pixel - WIN_HEIGHT / 2 + ray->wall_strip_height / 2) * step;
+
+    for (y = ray->wall_top_pixel; y <= ray->wall_bottom_pixel; y++)
     {
-        int tex_y = (int)tex_pos & (tex->height - 1);
+        int tex_y = (int)tex_pos;
+        // Clamp tex_y pour éviter les débordements
+        if (tex_y < 0)
+            tex_y = 0;
+        if (tex_y >= tex->height)
+            tex_y = tex->height - 1;
+
+        // Calcul de la position du pixel dans le buffer de la texture
         char *pixel = tex->buffer + (tex_y * tex->line_length + tex->texx * (tex->bits_per_pixel / 8));
-        color = *(unsigned int *)pixel;
+        int color = *(unsigned int *)pixel;
+
         my_mlx_pixel_put(&mlx->img, x, y, color);
         tex_pos += step;
-        y++;
     }
 }
 

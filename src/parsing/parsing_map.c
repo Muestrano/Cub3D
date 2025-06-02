@@ -58,8 +58,8 @@ void replace_position(t_map *map, int i, int j)
     {
         map->init_orientation = map->map_brute[i][j];
         map->map_brute[i][j] = '0';
-        map->x_init = i;
-        map->y_init = j;
+        map->x_init = j;
+        map->y_init = i;
     }
     // printf("Initial orientation: %c\n", map->init_orientation);
     // printf("Initial position:(x, y) (%d, %d)\n", map->x_init, map->y_init);
