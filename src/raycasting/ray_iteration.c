@@ -41,61 +41,6 @@ int	is_wall(double x_inter, double y_inter, t_map map)
 /* Take the ray, the map and the player structures */
 /* Check every horizontal intersection until a wall is hit by the ray */
 /* Get and save the distance of the wall hit */
-// void	horizontal_check(t_ray *ray, t_map map, t_player player)
-// {
-// 	int	a_x;
-// 	int	a_y;
-// 	int	x_step;
-// 	int	y_step;
-
-// 	a_y = floor(player.p_y / TILE_SIZE) * TILE_SIZE;
-// 	// norm_angle(&(ray->angle));
-// 	a_x = player.p_x + ((a_y - player.p_y) / tan(ray->angle));
-// 	y_step = TILE_SIZE * step_sign(ray->angle, 'y');
-// 	x_step = (y_step / tan(ray->angle) * step_sign(ray->angle, 'x'));
-// 	// printf("***********************\n");
-// 	// printf("ax = %d\n", a_x);
-// 	// printf("ay = %d\n", a_y);
-// 	// printf("px = %d\n", player.p_x);
-// 	// printf("py = %d\n", player.p_y);
-// 	// printf("tan ray angle = %f\n", tan(ray->angle));
-// 	while (!is_wall(a_x, a_y, map))
-// 	{
-// 		a_x += x_step;
-// 		a_y += y_step;
-// 	}
-// 	ray->dist = sqrt(pow(player.p_x - a_x, 2) + pow(player.p_y - a_y, 2)); //Checker si la valeur est bien sauvegardee grace au ptr
-// 	// printf("ray dist = %f\n", ray->dist);
-// 	return ;
-// }
-
-/* Take the ray, the map and the player structures */
-/* Check every horizontal intersection until a wall is hit by the ray */
-/* Get and save the distance of the wall hit if it is closer */
-// void	vertical_check(t_ray *ray, t_map map, t_player player)
-// {
-// 	int		a_x;
-// 	int		a_y;
-// 	int		x_step;
-// 	int		y_step;
-// 	double	new_dist;
-
-// 	a_x = floor(player.p_y / TILE_SIZE) * TILE_SIZE;
-// 	// norm_angle(&(ray->angle));
-// 	a_y = player.p_y + ((a_x - player.p_x) / tan(ray->angle));
-// 	x_step = TILE_SIZE * step_sign(ray->angle, 'x');
-// 	y_step = (x_step / tan(ray->angle) * step_sign(ray->angle, 'y'));
-// 	while (!is_wall(a_x, a_y, map))
-// 	{
-// 		a_x += x_step;
-// 		a_y += y_step;
-// 	}
-// 	new_dist = sqrt(pow(player.p_x - a_x, 2) + pow(player.p_y - a_y, 2));
-// 	if (new_dist < ray->dist)
-// 		ray->dist = new_dist;
-// 	return;
-// }
-
 void	horizontal_check(t_ray *ray, t_map map, t_player player)
 {
 	int	a_x;
@@ -103,36 +48,24 @@ void	horizontal_check(t_ray *ray, t_map map, t_player player)
 	int	x_step;
 	int	y_step;
 
-	a_y = player.p_y * TILE_SIZE;
+	a_y = floor(player.p_y / TILE_SIZE) * TILE_SIZE;
 	// norm_angle(&(ray->angle));
 	a_x = player.p_x + ((a_y - player.p_y) / tan(ray->angle));
 	y_step = TILE_SIZE * step_sign(ray->angle, 'y');
 	x_step = (y_step / tan(ray->angle) * step_sign(ray->angle, 'x'));
-	printf("***********************\n");
-	printf("ax = %d\n", a_x);
-	printf("ay = %d\n", a_y);
-	printf("px = %d\n", player.p_x);
-	printf("py = %d\n", player.p_y);
-	printf("tan ray angle = %f\n", tan(ray->angle));
-	printf("ray angle = %f\n", ray->angle);
-	printf("111111111111111111111111\n");
 	while (!is_wall(a_x, a_y, map))
 	{
 		a_x += x_step;
 		a_y += y_step;
 	}
-	printf("***********************\n");
-	printf("ax = %d\n", a_x);
-	printf("ay = %d\n", a_y);
-	printf("px = %d\n", player.p_x);
-	printf("py = %d\n", player.p_y);
-	printf("tan ray angle = %f\n", tan(ray->angle));
-	printf("ray angle = %f\n", ray->angle);
-	printf("22222222222222222222222222222\n");
 	ray->dist = sqrt(pow(player.p_x - a_x, 2) + pow(player.p_y - a_y, 2)); //Checker si la valeur est bien sauvegardee grace au ptr
 	// printf("ray dist = %f\n", ray->dist);
 	return ;
 }
+
+/* Take the ray, the map and the player structures */
+/* Check every horizontal intersection until a wall is hit by the ray */
+/* Get and save the distance of the wall hit if it is closer */
 void	vertical_check(t_ray *ray, t_map map, t_player player)
 {
 	int		a_x;
@@ -141,11 +74,17 @@ void	vertical_check(t_ray *ray, t_map map, t_player player)
 	int		y_step;
 	double	new_dist;
 
-	a_x = player.p_y * TILE_SIZE;
+	a_x = floor(player.p_y / TILE_SIZE) * TILE_SIZE;
 	// norm_angle(&(ray->angle));
 	a_y = player.p_y + ((a_x - player.p_x) / tan(ray->angle));
 	x_step = TILE_SIZE * step_sign(ray->angle, 'x');
 	y_step = (x_step / tan(ray->angle) * step_sign(ray->angle, 'y'));
+	printf("***********************\n");
+	printf("ax = %d\n", a_x);
+	printf("ay = %d\n", a_y);
+	printf("px = %d\n", player.p_x);
+	printf("py = %d\n", player.p_y);
+	printf("tan ray angle = %f\n", tan(ray->angle));
 	while (!is_wall(a_x, a_y, map))
 	{
 		a_x += x_step;
@@ -196,7 +135,7 @@ void	ray_iteration(t_mlx *mlx)
 		vertical_check(&ray, mlx->map, mlx->player);
 		fish_angle = ray.angle - mlx->player.p_angle;
 		norm_angle(&fish_angle);
-		ray.dist = ray.dist * cos(fish_angle);
+		ray.dist = ray.dist * cos(fish_angle) / TILE_SIZE;
 		wall_strips(&ray);
 		ray_orientation(&ray);
 		calculate_texx(mlx, &ray, &(mlx->imgtext));

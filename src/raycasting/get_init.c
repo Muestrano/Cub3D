@@ -2,10 +2,8 @@
 
 void	init_player(t_player *player, t_map *map)
 {
-	//player->p_x = map->x_init * TILE_SIZE; //RAJOUTE TILE SIZE ????
-	//player->p_y = map->y_init * TILE_SIZE;
-	player->p_x = map->x_init;
-	player->p_y = map->y_init;
+	player->p_x = map->x_init * TILE_SIZE;
+	player->p_y = map->y_init * TILE_SIZE;
 	if (map->init_orientation == 'N')
 		player->p_angle = M_PI * 1.5;
 	else if (map->init_orientation == 'S')
