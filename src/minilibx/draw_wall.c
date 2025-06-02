@@ -24,8 +24,6 @@ void draw_wall(t_mlx *mlx, t_ray *ray, int x)
         if (j >= ray->wall_top_pixel && j <= ray->wall_bottom_pixel)
         {
             draw_texture(mlx, ray, &mlx->imgtext, x); // En chantier :)
-            color = 0;
-            my_mlx_pixel_put(&mlx->img, x, j, color);
         }
         if (j > ray->wall_bottom_pixel)
         {
