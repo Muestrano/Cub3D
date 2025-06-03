@@ -113,7 +113,10 @@ typedef struct s_mlx
 	t_player	player;
 	t_map		map;
 	t_texture	texture;
-	t_tex		imgtext;
+	t_tex		text_north;
+	t_tex		text_south;
+	t_tex		text_west;
+	t_tex		text_east;
 
 }				t_mlx;
 
@@ -148,7 +151,7 @@ void	print_struct(t_map map);
 void	check_border_map(char **map_brute);
 void	calc_map_size(t_map *map);
 void	print_imgtext(t_tex imgtext);
-void calculate_texx(t_mlx *mlx, t_ray *ray, t_tex *tex);
+void	calculate_texx(t_mlx *mlx, t_ray *ray);
 
 
 // void print_player(t_player player);
@@ -217,7 +220,7 @@ void treatment_texture(t_mlx *mlx);
 void draw_text(t_data *data, t_img *imgtext, int x, int y);
 void refresh_image(t_mlx *mlx);
 void draw_wall(t_mlx *mlx, t_ray *ray, int x);
-void draw_texture(t_mlx *mlx, t_ray *ray, t_tex *tex, int x);
+void draw_texture(t_mlx *mlx, t_ray *ray, int x);
 
 
 /*player_movements*/

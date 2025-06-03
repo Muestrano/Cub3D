@@ -1,6 +1,6 @@
 WE ress/textures/redbrick.xpm
 
-NO ress/textures/redbrick.xpm
+NO ress/textures/brick_2.xpm
 
 
 
@@ -20,8 +20,8 @@ C 235,198,52
 
 
 1111111
-1110001
-1110001
-10N0001
+1100011
+1000001
+100N001
 1000001
 1111111
