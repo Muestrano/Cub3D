@@ -16,36 +16,59 @@
 /* Take the ray struct pointer */
 void	ray_orientation(t_ray *ray)
 {
-	if (ray->angle >= (M_PI / 4) && ray->angle <= (M_PI * (3 / 4)))
+	if (ray->angle >= (M_PI * ((double)1 / 4)) && ray->angle <= (M_PI * ((double)3 / 4)))
 		ray->orientation = 'N';
-	else if (ray->angle >= (M_PI * (3 / 4)) && ray->angle <= (M_PI * (5 / 4)))
+	else if (ray->angle >= (M_PI * ((double)3 / 4)) && ray->angle <= (M_PI * ((double)5 / 4)))
 		ray->orientation = 'E';
-	else if (ray->angle >= (M_PI * (5 / 4)) && ray->angle <= (M_PI * (7 / 4)))
+	else if (ray->angle >= (M_PI * ((double)5 / 4)) && ray->angle <= (M_PI * ((double)7 / 4)))
 		ray->orientation = 'S';
 	else /*if (ray->angle >= (M_PI * (7 / 4)) || ray->angle <= (M_PI / 4))*/
 		ray->orientation = 'W';
+	// printf("***ORIENTATION*******\n");
+	// printf("angle = %f\n", ray->angle);
+	// printf("orientation = %c\n", ray->orientation);
+	// printf("***ORIENTATION*******\n");
 }
+/* Update the orientation of the ray */
+/* Take the ray struct pointer */
+// void	ray_orientation(t_ray *ray)
+// {
+// 	double	check_angle;
+
+// 	check_angle = ray->angle / M_PI;
+// 	if (check_angle >= (0.25) && check_angle <= (0.75))
+// 		ray->orientation = 'N';
+// 	else if (check_angle >= (0.75) && check_angle <= (1.25))
+// 		ray->orientation = 'E';
+// 	else if (check_angle >= (1.25) && check_angle <= (1.75))
+// 		ray->orientation = 'S';
+// 	else /*if (ray->angle >= (M_PI * (7 / 4)) || ray->angle <= (M_PI / 4))*/
+// 		ray->orientation = 'W';
+
+// 	printf("***ORIENTATION*******\n");
+// 	printf("angle = %f\n", ray->angle);
+// 	printf("checkangle = %f\n", check_angle);
+// 	printf("orientation = %c\n", ray->orientation);
+// 	printf("***ORIENTATION*******\n");
+// }
 
 /* Tells the sign of the steps based on the ray's angle */
 /* Take the angle of a ray and the type of step (x or y) */
 /* Returns the sign of the step */
 int	step_sign(double angle, char c)
 {
-	float	pi;
-
-	pi = M_PI;
 	if (c == 'x')
 	{
-		if (angle == (pi / 2) || angle == (pi * 3 / 2))
+		if (angle == (M_PI * ((double) 1/ 2)) || angle == (M_PI * ((double)3 / 2)))
 			return (0);
-		else if (angle > (pi / 2) && angle < (pi * 3 / 2))
+		else if (angle > (M_PI * ((double)1 / 2)) && angle < (M_PI * ((double)3 / 2)))
 			return (-1);
 	}
 	else
 	{
-		if (!angle || angle == pi)
+		if (!angle || angle == M_PI)
 			return (0);
-		else if (angle > pi)
+		else if (angle > M_PI)
 			return (-1);
 	}
 	return (1);
@@ -55,11 +78,8 @@ int	step_sign(double angle, char c)
 /* Take an angle as argument */
 void	norm_angle(double *angle)
 {
-	float	pi;
-
-	pi = M_PI;
-	while (*angle >= (2 * pi)) //remplace les if par des while
-		*angle -= 2 * pi;
+	while (*angle >= (double)(2 * M_PI)) //remplace les if par des while
+		*angle -= (double)2 * M_PI;
 	while (*angle < 0)
-		*angle += 2 * pi;
+		*angle += (double)2 * M_PI;
 }
