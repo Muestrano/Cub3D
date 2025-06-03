@@ -17,10 +17,10 @@ void	init_player(t_player *player, t_map *map)
 
 void treatment_texture(t_mlx *mlx)
 {
-	treat_text(mlx->ptr, &mlx->imgtext, mlx->texture.north);
-	treat_text(mlx->ptr, &mlx->imgtext, mlx->texture.south);
-	treat_text(mlx->ptr, &mlx->imgtext, mlx->texture.west);
-	treat_text(mlx->ptr, &mlx->imgtext, mlx->texture.east);
+	treat_text(mlx->ptr, &mlx->text_east, mlx->texture.north);
+	treat_text(mlx->ptr, &mlx->text_west, mlx->texture.south);
+	treat_text(mlx->ptr, &mlx->text_north, mlx->texture.west);
+	treat_text(mlx->ptr, &mlx->text_south, mlx->texture.east);
 }
 
 void treat_text(void *mlx_ptr, t_tex *tex, char* path)
@@ -43,13 +43,4 @@ void treat_text(void *mlx_ptr, t_tex *tex, char* path)
 	}
 	tex->texx = 0; // Initialize texx
 	tex->texy = 0; // Initialize texy
-}
-
-void print_imgtext(t_tex imgtext)
-{
-	printf("NORTH: %p\n", imgtext.img_pointer);
-	printf("SOUTH: %d\n", imgtext.bits_per_pixel);
-	printf("WEST: %d\n", imgtext.line_length);
-	printf("EAST: %d\n", imgtext.endian);
-	printf("FLOOR: %s\n", imgtext.buffer);
 }
