@@ -26,16 +26,19 @@ int	is_wall(double x_inter, double y_inter, t_map map)
 		x = 0;
 	if (y < 0)
 		y = 0;
+	// printf("DEBUG***WALL\n");
 	// printf("***********************\n");
 	// printf("x = %d\n", x);
 	// printf("y = %d\n", y);
 	// printf("x inter = %f\n", x_inter);
 	// printf("y inter = %f\n", y_inter);
 	// printf("map.map_brute[x][y] - 48 = %d\n", map.map_brute[x][y] - 48);
+	// printf("map width = %d\n", map.map_width);
+	// printf("map height = %d\n", map.map_height);
 	// printf("***********************\n\n");
 	if (x >= map.map_width || y >= map.map_height)
 		return (1);
-	return (map.map_brute[x][y] - 48);
+	return (map.map_brute[y][x] - 48);
 }
 
 /* Take the ray, the map and the player structures */
@@ -53,6 +56,7 @@ void	horizontal_check(t_ray *ray, t_map map, t_player player)
 	a_x = player.p_x + ((a_y - player.p_y) / tan(ray->angle));
 	y_step = TILE_SIZE * step_sign(ray->angle, 'y');
 	x_step = (y_step / tan(ray->angle) * step_sign(ray->angle, 'x'));
+	printf("DEBUG\n");
 	while (!is_wall(a_x, a_y, map))
 	{
 		a_x += x_step;
@@ -162,11 +166,15 @@ void	ray_iteration(t_mlx *mlx)
 		printf("wall width = %d\n", mlx->map.map_width);
 		printf("nb ray = %d\n", nb_ray);
   		printf("***********************\n");
+		printf("H1nb ray = %d\n", nb_ray);
 		horizontal_check(&ray, mlx->map, mlx->player);
+		printf("Hnb ray = %d\n", nb_ray);
 		vertical_check(&ray, mlx->map, mlx->player);
+		printf("Vnb ray = %d\n", nb_ray);
 		fish_angle = ray.angle - mlx->player.p_angle;
 		norm_angle(&fish_angle);
 		ray.dist = ray.dist * cos(fish_angle) / TILE_SIZE;
+		// ray.dist = ray.dist * cos(fish_angle);
 		wall_strips(&ray);
 		ray_orientation(&ray);
 		calculate_texx(mlx, &ray, &(mlx->imgtext));
