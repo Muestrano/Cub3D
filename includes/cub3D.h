@@ -26,7 +26,7 @@
 # define FOV 60 // Field of view
 # define WIN_WIDTH 800 // WIDTH of the window
 # define WIN_HEIGHT 600 // HEIGHT of the window
-# define playerSpeed 1
+# define playerSpeed 5
 # define rot_speed 0.5
 
 /*differencier les infos de la map avec les textures */
