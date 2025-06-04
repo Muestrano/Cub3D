@@ -93,7 +93,7 @@ void	vertical_check(t_ray *ray, t_map map, t_player player)
 	// norm_angle(&(ray->angle));
 	a_y = player.p_y + floor((double)(a_x - player.p_x) / tan(ray->angle));
 	x_step = TILE_SIZE * step_sign(ray->angle, 'x');
-	y_step = floor((double)x_step / tan(ray->angle)) * step_sign(ray->angle, 'y');
+	y_step = floor((double)x_step * tan(ray->angle)) * step_sign(ray->angle, 'y');
 	while (!is_wall(a_x, a_y, map))
 	{
 		a_x += x_step;
