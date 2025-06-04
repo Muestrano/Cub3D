@@ -52,11 +52,15 @@ void	horizontal_check(t_ray *ray, t_map map, t_player player)
 	int	y_step;
 
 	a_y = floor((double)player.p_y / TILE_SIZE) * TILE_SIZE;
-	// norm_angle(&(ray->angle));
+	if (step_sign(ray->angle, 'y') > 0)
+		a_y += TILE_SIZE;
 	a_x = player.p_x + floor((double)(a_y - player.p_y) / tan(ray->angle));
 	y_step = TILE_SIZE * step_sign(ray->angle, 'y');
-	x_step = floor((double)y_step / tan(ray->angle)) * step_sign(ray->angle, 'x');
-	// printf("DEBUG\n");
+	// x_step = floor((double)y_step / tan(ray->angle)) * step_sign(ray->angle, 'x');
+	x_step = floor((double)y_step / tan(ray->angle));
+	if (x_step < 0)
+		x_step *= -1;
+	x_step *=  step_sign(ray->angle, 'x');
 	while (!is_wall(a_x, a_y, map))
 	{
 		a_x += x_step;
@@ -89,11 +93,16 @@ void	vertical_check(t_ray *ray, t_map map, t_player player)
 	int		y_step;
 	double	new_dist;
 
-	a_x = floor((double)player.p_y / TILE_SIZE) * TILE_SIZE;
-	// norm_angle(&(ray->angle));
-	a_y = player.p_y + floor((double)(a_x - player.p_x) / tan(ray->angle));
+	a_x = floor((double)player.p_x / TILE_SIZE) * TILE_SIZE;
+	if (step_sign(ray->angle, 'x') > 0)
+		a_x += TILE_SIZE;
+	a_y = player.p_y + floor((double)(a_x - player.p_x) * tan(ray->angle));
 	x_step = TILE_SIZE * step_sign(ray->angle, 'x');
-	y_step = floor((double)x_step * tan(ray->angle)) * step_sign(ray->angle, 'y');
+	// y_step = floor((double)x_step * tan(ray->angle)) * step_sign(ray->angle, 'y');
+	y_step = floor((double)x_step * tan(ray->angle));
+	if (y_step < 0)
+		y_step *= -1;
+	y_step *=  step_sign(ray->angle, 'y');
 	while (!is_wall(a_x, a_y, map))
 	{
 		a_x += x_step;
