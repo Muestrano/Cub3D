@@ -82,6 +82,7 @@ typedef struct s_ray
 	int		wall_strip_height;
 	int		wall_top_pixel;
 	int		wall_bottom_pixel;
+	int		vertical;
 }	t_ray;
 
 /* Player raycasting structure */

@@ -54,6 +54,8 @@ void	horizontal_check(t_ray *ray, t_map map, t_player player)
 	a_y = floor((double)player.p_y / TILE_SIZE) * TILE_SIZE;
 	if (step_sign(ray->angle, 'y') > 0)
 		a_y += TILE_SIZE;
+	else
+		a_y -= 1;
 	a_x = player.p_x + floor((double)(a_y - player.p_y) / tan(ray->angle));
 	y_step = TILE_SIZE * step_sign(ray->angle, 'y');
 	// x_step = floor((double)y_step / tan(ray->angle)) * step_sign(ray->angle, 'x');
@@ -61,12 +63,15 @@ void	horizontal_check(t_ray *ray, t_map map, t_player player)
 	if (x_step < 0)
 		x_step *= -1;
 	x_step *=  step_sign(ray->angle, 'x');
-	while (!is_wall(a_x, a_y, map))
+	int offset = 0;
+	// if (step_sign(ray->angle, 'y') < 0)
+	// 	offset = -1;
+	while (!is_wall(a_x, a_y + offset, map))
 	{
 		a_x += x_step;
 		a_y += y_step;
 	}
-	ray->dist = (double)sqrt(pow(player.p_x - a_x, 2) + pow(player.p_y - a_y, 2)); //Checker si la valeur est bien sauvegardee grace au ptr
+	ray->dist = (double)sqrt(pow(player.p_x - a_x, 2) + pow(player.p_y - a_y + offset, 2)); //Checker si la valeur est bien sauvegardee grace au ptr
 	// printf("***********************\n");
 	// printf("HORIZONTAL CHECK\n");
 	// printf("ax = %d\n", a_x);
@@ -94,6 +99,9 @@ void	vertical_check(t_ray *ray, t_map map, t_player player)
 	double	new_dist;
 
 	a_x = floor((double)player.p_x / TILE_SIZE) * TILE_SIZE;
+	// printf("***********************\n\n");
+	// printf("STEP SIGN = %d\n", step_sign(ray->angle, 'x'));
+	// printf("angle = %f\n",ray->angle / M_PI);
 	if (step_sign(ray->angle, 'x') > 0)
 		a_x += TILE_SIZE;
 	a_y = player.p_y + floor((double)(a_x - player.p_x) * tan(ray->angle));
@@ -103,28 +111,34 @@ void	vertical_check(t_ray *ray, t_map map, t_player player)
 	if (y_step < 0)
 		y_step *= -1;
 	y_step *=  step_sign(ray->angle, 'y');
-	while (!is_wall(a_x, a_y, map))
+	int offset = 0;
+	if (x_step < 0)
+		offset = -1;
+	while (!is_wall(a_x + offset, a_y, map))
 	{
 		a_x += x_step;
 		a_y += y_step;
 	}
-	new_dist = (double)sqrt(pow(player.p_x - a_x, 2) + pow(player.p_y - a_y, 2));
+	new_dist = (double)sqrt(pow(player.p_x - a_x + offset, 2) + pow(player.p_y - a_y, 2));
 	
-	printf("ray dist = %f\n", ray->dist);
+	// printf("ray dist = %f\n", ray->dist);
 	if (new_dist < ray->dist)
+	{
 		ray->dist = new_dist;
-	printf("***********************\n");
-	printf("VERTICAL CHECK\n");
-	printf("ax = %d\n", a_x);
-	printf("ay = %d\n", a_y);
-	printf("xstep = %d\n", x_step);
-	printf("ystep = %d\n", y_step);
-	printf("px = %d\n", player.p_x);
-	printf("py = %d\n", player.p_y);
-	printf("tan ray angle = %f\n", tan(ray->angle));
-	printf("dist = %f\n", ray->dist);
-	printf("new dist = %f\n", new_dist);
-	printf("***********************\n");
+		ray->vertical = 1;
+	}
+	// printf("***********************\n");
+	// printf("VERTICAL CHECK\n");
+	// printf("ax = %d\n", a_x);
+	// printf("ay = %d\n", a_y);
+	// printf("xstep = %d\n", x_step);
+	// printf("ystep = %d\n", y_step);
+	// printf("px = %d\n", player.p_x);
+	// printf("py = %d\n", player.p_y);
+	// printf("tan ray angle = %f\n", tan(ray->angle));
+	// printf("dist = %f\n", ray->dist);
+	// printf("new dist = %f\n", new_dist);
+	// printf("***********************\n");
 	return;
 }
 
@@ -167,14 +181,16 @@ void	ray_iteration(t_mlx *mlx)
 	norm_angle(&(ray.angle));
 	while (nb_ray < WIN_WIDTH)
 	{
-		// printf("***********************\n");
-		// printf("nb ray = %d\n", nb_ray);
+		ray.vertical = 0;
+		printf("***********************\n");
+		printf("nb ray = %d\n", nb_ray);
 		// printf("wall height = %d\n", ray.wall_strip_height);
 		// printf("wall top = %d\n", ray.wall_top_pixel);
 		// printf("wall bot = %d\n", ray.wall_bottom_pixel);
-		// printf("orientation = %c\n", ray.orientation);
-		// printf("player angle = %f\n", mlx->player.p_angle);
-		// printf("angle = %f\n", ray.angle);
+		printf("orientation = %c\n", ray.orientation);
+		printf("player angle = %f\n", mlx->player.p_angle);
+		printf("angle = %f\n", ray.angle);
+		printf("multiple pi angle = %f\n", ray.angle / M_PI);
 		// printf("wall width = %d\n", mlx->map.map_width);
 		// printf("nb ray = %d\n", nb_ray);
   		// printf("***********************\n");

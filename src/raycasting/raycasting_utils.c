@@ -16,11 +16,11 @@
 /* Take the ray struct pointer */
 void	ray_orientation(t_ray *ray)
 {
-	if (ray->angle >= (M_PI * ((double)1 / 4)) && ray->angle <= (M_PI * ((double)3 / 4)))
+	if (ray->angle >= (M_PI * ((double)1 / 4)) && ray->angle <= (M_PI * ((double)3 / 4)) && ray->vertical == 0)
 		ray->orientation = 'N';
-	else if (ray->angle >= (M_PI * ((double)3 / 4)) && ray->angle <= (M_PI * ((double)5 / 4)))
+	else if (ray->angle >= (M_PI * ((double)3 / 4)) && ray->angle <= (M_PI * ((double)5 / 4)) && ray->vertical == 1)
 		ray->orientation = 'E';
-	else if (ray->angle >= (M_PI * ((double)5 / 4)) && ray->angle <= (M_PI * ((double)7 / 4)))
+	else if (ray->angle >= (M_PI * ((double)5 / 4)) && ray->angle <= (M_PI * ((double)7 / 4)) && ray->vertical == 0)
 		ray->orientation = 'S';
 	else /*if (ray->angle >= (M_PI * (7 / 4)) || ray->angle <= (M_PI / 4))*/
 		ray->orientation = 'W';
